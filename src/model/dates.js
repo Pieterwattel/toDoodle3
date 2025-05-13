@@ -24,7 +24,7 @@ class Dates {
     return newDate;
   }
 
-  getDateObject(date) {
+  getDateFnsDate(date) {
     date = this.parseHtmlDateToFnsFormat(date);
 
     return endOfDay(new Date(date));

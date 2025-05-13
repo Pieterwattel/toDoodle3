@@ -14,10 +14,6 @@ import { todoController } from './controller/todoController';
 */
 
 let testingIIFE = (function () {
-  console.log(parseISO('2026 - 01 - 01'));
-  console.log(parseISO('2026, 01, 02'));
-  console.log(parseISO('2026-01-03'));
-
   const todoTestArray = [
     {
       title: 'todoNextYear',
