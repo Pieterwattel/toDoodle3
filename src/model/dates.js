@@ -1,7 +1,17 @@
-const dates = {
-  currentDate: new Date(),
+import { addDays, endOfDay } from 'date-fns';
 
-  parseHtmlDateToFnsFormat: function (htmlDate) {
+class Dates {
+  constructor() {
+    this.currentDate = endOfDay(new Date());
+  }
+
+  static getSingleton() {
+    if (this.instance) return this.instance;
+    this.instance = new Dates();
+    return this.instance;
+  }
+
+  parseHtmlDateToFnsFormat(htmlDate) {
     //dates need to be formatted from:
     //2020-01-05 to 2020, 1, 5
 
@@ -12,8 +22,30 @@ const dates = {
     let newDate = dateWithCommas.replace(precedingZeroRegex, ', ');
 
     return newDate;
-  },
-};
+  }
+
+  getDateObject(date) {
+    date = this.parseHtmlDateToFnsFormat(date);
+
+    return endOfDay(new Date(date));
+  }
+
+  getDeadlineDependingOnUrgency(urgency) {
+    switch (urgency) {
+      case 1:
+        return addDays(new Date(), 3);
+        break;
+      case 2:
+        return addDays(new Date(), 10);
+        break;
+      case 3:
+        return addDays(new Date(), 20);
+        break;
+    }
+  }
+}
+
+const dates = Dates.getSingleton();
 
 //how to format the dates:
 /*

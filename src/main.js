@@ -1,6 +1,6 @@
 import './styles.css';
+import { parseISO } from 'date-fns';
 import { todoController } from './controller/todoController';
-
 
 /*
         this.#id = dataObj.id;
@@ -14,51 +14,49 @@ import { todoController } from './controller/todoController';
 */
 
 let testingIIFE = (function () {
+  console.log(parseISO('2026 - 01 - 01'));
+  console.log(parseISO('2026, 01, 02'));
+  console.log(parseISO('2026-01-03'));
+
   const todoTestArray = [
     {
       title: 'todoNextYear',
       importance: 2,
       lastDayOfDeadline: '2026 - 01 - 01',
-      dateSpecifiedByUser: true,
     },
     {
       title: 'todoToday',
       importance: 1,
       lastDayOfDeadline: '2025, 5, 09',
-      dateSpecifiedByUser: true,
     },
     {
       title: 'todoInThePast',
       importance: 2,
       lastDayOfDeadline: '2024 - 10 - 09',
-      dateSpecifiedByUser: false,
     },
     {
       title: 'veryChillTodo',
       importance: 3,
       lastDayOfDeadline: '2025 - 12 - 01',
-      dateSpecifiedByUser: true,
     },
     {
       title: 'todoLaterToday',
- //     urgency: 2,
+      urgency: 2,
       importance: 1,
-      lastDayOfDeadline: '2025 - 05 - 9',
-      dateSpecifiedByUser: false,
+      lastDayOfDeadline: false,
     },
     {
       title: 'todoTomorrow',
- //     urgency: 2,
+      urgency: 3,
       importance: 1,
-      lastDayOfDeadline: '2025 - 05 - 10',
-      dateSpecifiedByUser: false,
+      lastDayOfDeadline: false,
     },
   ];
 
   console.log('--------------------------');
   console.log("go through all todo's and print them");
   todoTestArray.forEach((element) => {
-    todoController.createTodo(element)
+    todoController.createTodo(element);
   });
 
   /*

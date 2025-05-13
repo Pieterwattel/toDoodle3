@@ -35,7 +35,7 @@ class TodoItem {
 
   static getAdditionalCreationData(dataObj) {
     if (dataObj.lastDayOfDeadline) {
-      dataObj.lastDayOfDeadline = dates.parseHtmlDateToFnsFormat(
+      dataObj.lastDayOfDeadline = dates.getDateObject(
         dataObj.lastDayOfDeadline,
       );
       dataObj.dateSpecifiedByUser = true;
@@ -46,6 +46,7 @@ class TodoItem {
       );
       dataObj.dateSpecifiedByUser = false;
     }
+
     return dataObj;
   }
 }
