@@ -1,6 +1,7 @@
 import './styles.css';
 import { parseISO } from 'date-fns';
 import { todoController } from './controller/todoController';
+import { todoStorage } from './model/todoStorage';
 
 /*
         this.#id = dataObj.id;
@@ -54,6 +55,7 @@ let testingIIFE = (function () {
   todoTestArray.forEach((element) => {
     todoController.createTodo(element);
   });
+  console.log(todoStorage.array);
 
   /*
   todoController.orderTodos();
