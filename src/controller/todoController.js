@@ -1,23 +1,23 @@
-import { TodoItem } from "../model/todoItem"
+import { TodoItem } from '../model/todoItem';
+import { todoStorage } from '../model/todoStorage';
 
 class TodoController {
-    constructor() { }
-    
-    static instance
+  constructor() {}
 
-    static getSingleton() {
-        if (this.instance) return this.instance
-        this.instance = new TodoController
-        return this.instance
-    }
+  static instance;
 
-    createTodo(dataObj) {
-        let newTodo = TodoItem.create(dataObj)
-        console.log(newTodo)
-    }
+  static getSingleton() {
+    if (this.instance) return this.instance;
+    this.instance = new TodoController();
+    return this.instance;
+  }
 
+  createTodo(dataObj) {
+    let newTodo = TodoItem.create(dataObj);
+    todoStorage.addNewTodo(newTodo);
+  }
 }
 
-const todoController = TodoController.getSingleton()
+const todoController = TodoController.getSingleton();
 
-export {todoController}
+export { todoController };

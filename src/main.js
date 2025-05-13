@@ -23,7 +23,7 @@ let testingIIFE = (function () {
     {
       title: 'todoToday',
       importance: 1,
-      lastDayOfDeadline: '2025, 5, 09',
+      lastDayOfDeadline: '2025, 5, 13',
     },
     {
       title: 'todoInThePast',
@@ -37,7 +37,7 @@ let testingIIFE = (function () {
     },
     {
       title: 'todoLaterToday',
-      urgency: 2,
+      urgency: 1,
       importance: 1,
       lastDayOfDeadline: false,
     },
