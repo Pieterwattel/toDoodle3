@@ -14,8 +14,8 @@ class TodoStorage {
   constructor() {}
 
   get array() {
-    let sortedArray = this.#array.sort((firstElement, secondElement) => {
-      return firstElement.daysUntilDeadline - secondElement.daysUntilDeadline;
+    let sortedArray = [...this.#array].sort((firstElement, secondElement) => {
+      return firstElement.deadline - secondElement.deadline;
     });
     return sortedArray;
   }
