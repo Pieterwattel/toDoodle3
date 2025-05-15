@@ -9,15 +9,21 @@ class TodoStorage {
     return this.instance;
   }
 
-  #array = [];
+  #todoArray = [];
 
   constructor() {}
 
-  get array() {
-    let sortedArray = [...this.#array].sort((firstElement, secondElement) => {
+  get todoArray() {
+    this.#todoArray.sort((firstElement, secondElement) => {
       return firstElement.deadline - secondElement.deadline;
     });
-    return sortedArray;
+
+    for (let i = this.#todoArray.length; i > 0; i--) {
+      let j = i - 1;
+      this.#todoArray[j].index = j;
+    }
+
+    return this.#todoArray;
   }
 
   addNewTodo(newTodo) {
@@ -47,7 +53,13 @@ class TodoStorage {
         );
         return;
     }
-    this.#array.push(newTodo);
+    this.#todoArray.push(newTodo);
+  }
+
+  getTodoFromId(idValue) {
+    return this.todoArray.find((element) => {
+      return element.id == idValue;
+    });
   }
 }
 

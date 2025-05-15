@@ -55,8 +55,10 @@ let testingIIFE = (function () {
   todoTestArray.forEach((element) => {
     todoController.createTodo(element);
   });
-  console.log(todoStorage.array);
 
+  let todo = todoStorage.getTodoFromId(5);
+
+  todoController.movement.moveTodoInUrgency(todo, 'later');
   /*
   todoController.orderTodos();
   todoController.changeTodoPosition(5, 'later');
