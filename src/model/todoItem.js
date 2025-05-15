@@ -2,6 +2,7 @@ import { todoUtil } from './todoUtils.js';
 
 class TodoItem {
   #id;
+  #index;
   #title;
   #importance;
   #deadline;
@@ -10,6 +11,7 @@ class TodoItem {
 
   constructor(dataObj) {
     this.#id = TodoItem.id++;
+    this.#index = null;
     this.#title = dataObj.title;
     this.#importance = dataObj.importance;
 
@@ -21,6 +23,20 @@ class TodoItem {
 
   get id() {
     return this.#id;
+  }
+
+  get index() {
+    return this.#index;
+  }
+
+  set index(value) {
+    if (typeof value === 'number') {
+      this.#index = value;
+    } else {
+      console.log(
+        `${value} is a ${typeof value}, therefore not a valid index for todo ${this.#title}`,
+      );
+    }
   }
 
   get title() {

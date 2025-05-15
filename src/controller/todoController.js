@@ -1,8 +1,15 @@
 import { TodoItem } from '../model/todoItem';
 import { todoStorage } from '../model/todoStorage';
+import { movement } from '../model/todoMovement';
 
 class TodoController {
-  constructor() {}
+  constructor() {
+    this.movement = {
+      moveTodoInUrgency: function (todo, direction) {
+        movement.moveTodoInUrgency(todo, direction, todoStorage.todoArray);
+      },
+    };
+  }
 
   static instance;
 

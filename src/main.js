@@ -56,9 +56,9 @@ let testingIIFE = (function () {
     todoController.createTodo(element);
   });
 
-  let todo = todoStorage.getTodoFromId(5);
+  let todo = todoStorage.getTodoFromId(1);
 
-  todoController.movement.moveTodoInUrgency(todo, 'later');
+  todoController.movement.moveTodoInUrgency(todo, 'earlier');
   /*
   todoController.orderTodos();
   todoController.changeTodoPosition(5, 'later');
