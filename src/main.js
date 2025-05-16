@@ -21,51 +21,59 @@ let testingIIFE = (function () {
       title: 'todoNextYear',
       importance: 2,
       lastDayOfDeadline: '2026 - 01 - 01',
+      category: 'thing1',
     },
     {
       title: 'todoToday',
       importance: 1,
       lastDayOfDeadline: '2025, 5, 13',
+      category: 'thing1',
     },
     {
       title: 'todoInThePast',
       importance: 2,
       lastDayOfDeadline: '2024 - 10 - 09',
+      category: 'thing1',
     },
     {
       title: 'veryChillTodo',
       importance: 3,
       lastDayOfDeadline: '2025 - 12 - 01',
+      category: 'thing1',
     },
     {
       title: 'todoLaterToday',
       importance: 3,
       lastDayOfDeadline: '2025 - 5 - 13',
+      category: 'thing2',
     },
     {
       title: 'todoTomorrow',
       importance: 3,
       lastDayOfDeadline: '2025 - 5 - 14',
+      category: 'thing2',
     },
   ];
 
-  console.log('--------------------------');
-  console.log("go through all todo's and print them");
+  console.log('--------------------------\ncreate todos:');
+  let i = 0;
   todoTestArray.forEach((element) => {
     todoController.createTodo(element);
+    i++;
   });
+  console.log(`**${i} todo's made**`);
 
+  console.log('--------------------------\nplace array:');
+  console.log([...todoStorage.todoArray]);
+
+  console.log('--------------------------');
+  console.log('move todoTomorrow one place earlier');
   let todo = todoUtil.getTodoFromId(5);
-  console.log(todoStorage.todoArray);
+  todoController.moveTodoInUrgency(todo, 'earlier');
+  console.log([...todoStorage.todoArray]);
 
-  todoController.movement.moveTodoInUrgency(todo, 'earlier');
-  todoController.movement.moveTodoInUrgency(todo, 'earlier');
-  todoController.movement.moveTodoInUrgency(todo, 'earlier');
-
-  /*
-  todoController.orderTodos();
-  todoController.changeTodoPosition(5, 'later');
-
-  console.log(storage.array);
-  */
+  console.log(
+    "--------------------------\ndisplay all todo's of category thing2",
+  );
+  console.log(todoController.getTodosByCategory('thing1'));
 })();

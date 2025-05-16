@@ -3,8 +3,6 @@ import { todoUtil } from './todoUtils';
 
 const movement = {
   moveTodoInUrgency: function (todo, direction, array) {
-    console.log([...array]);
-
     const nextTodo = this.getNextTodo(todo, direction, array);
 
     if (!nextTodo) {
@@ -26,7 +24,6 @@ const movement = {
       console.log(`ERROR direction value: ${direction} is invalid!`);
     }
     let nextTodoIndex = todo.index + directionValue;
-    console.log(nextTodoIndex);
     return todoUtil.getTodoFromIndex(nextTodoIndex);
   },
 };

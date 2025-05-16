@@ -3,13 +3,7 @@ import { todoStorage } from '../model/todoStorage';
 import { movement } from '../model/todoMovement';
 
 class TodoController {
-  constructor() {
-    this.movement = {
-      moveTodoInUrgency: function (todo, direction) {
-        movement.moveTodoInUrgency(todo, direction, todoStorage.todoArray);
-      },
-    };
-  }
+  constructor() {}
 
   static instance;
 
@@ -22,6 +16,14 @@ class TodoController {
   createTodo(dataObj) {
     let newTodo = TodoItem.create(dataObj);
     todoStorage.addNewTodo(newTodo);
+  }
+
+  moveTodoInUrgency(todo, direction) {
+    movement.moveTodoInUrgency(todo, direction, todoStorage.todoArray);
+  }
+
+  getTodosByCategory(categoryName) {
+    return todoStorage.getTodosByCategory(categoryName, todoStorage.todoArray);
   }
 }
 

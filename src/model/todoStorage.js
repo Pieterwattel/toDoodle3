@@ -57,11 +57,20 @@ class TodoStorage {
   }
 
   switchTodosInArray(todo, otherTodo, array) {
-    console.log(array);
     const temp = array[todo.index];
     array[todo.index] = array[otherTodo.index];
     array[otherTodo.index] = temp;
-    console.log(array);
+  }
+
+  getTodosByCategory(categoryName, array) {
+    const categoryArray = [];
+    for (let i = array.length; i > 0; i--) {
+      let currentElement = array[i - 1];
+      if (currentElement.category == categoryName) {
+        categoryArray.unshift(currentElement);
+      }
+    }
+    return categoryArray;
   }
 }
 

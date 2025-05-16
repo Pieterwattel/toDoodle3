@@ -5,6 +5,7 @@ class TodoItem {
   #index;
   #title;
   #importance;
+  #category;
   #deadline;
   #dateSpecifiedByUser;
   #finished;
@@ -14,6 +15,7 @@ class TodoItem {
     this.#index = null;
     this.#title = dataObj.title;
     this.#importance = dataObj.importance;
+    this.#category = dataObj.category;
 
     this.#dateSpecifiedByUser = dataObj.lastDayOfDeadline ? true : false;
     this.#deadline = todoUtil.getTodoDate(dataObj);
@@ -45,6 +47,10 @@ class TodoItem {
 
   get importance() {
     return this.#importance;
+  }
+
+  get category() {
+    return this.#category;
   }
 
   get deadline() {
