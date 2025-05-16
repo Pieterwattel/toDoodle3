@@ -1,6 +1,7 @@
 import './styles.css';
 import { parseISO } from 'date-fns';
 import { todoController } from './controller/todoController';
+import { todoUtil } from './model/todoUtils';
 import { todoStorage } from './model/todoStorage';
 
 /*
@@ -38,15 +39,13 @@ let testingIIFE = (function () {
     },
     {
       title: 'todoLaterToday',
-      urgency: 1,
-      importance: 1,
-      lastDayOfDeadline: false,
+      importance: 3,
+      lastDayOfDeadline: '2025 - 5 - 13',
     },
     {
       title: 'todoTomorrow',
-      urgency: 3,
-      importance: 1,
-      lastDayOfDeadline: false,
+      importance: 3,
+      lastDayOfDeadline: '2025 - 5 - 14',
     },
   ];
 
@@ -56,9 +55,13 @@ let testingIIFE = (function () {
     todoController.createTodo(element);
   });
 
-  let todo = todoStorage.getTodoFromId(1);
+  let todo = todoUtil.getTodoFromId(5);
+  console.log(todoStorage.todoArray);
 
   todoController.movement.moveTodoInUrgency(todo, 'earlier');
+  todoController.movement.moveTodoInUrgency(todo, 'earlier');
+  todoController.movement.moveTodoInUrgency(todo, 'earlier');
+
   /*
   todoController.orderTodos();
   todoController.changeTodoPosition(5, 'later');

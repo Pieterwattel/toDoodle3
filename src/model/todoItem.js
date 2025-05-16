@@ -51,6 +51,10 @@ class TodoItem {
     return this.#deadline;
   }
 
+  set deadline(value) {
+    this.#deadline = value;
+  }
+
   get dateSpecifiedByUser() {
     return this.#dateSpecifiedByUser;
   }

@@ -1,20 +1,19 @@
 import { todoStorage } from './todoStorage';
+import { todoUtil } from './todoUtils';
 
 const movement = {
   moveTodoInUrgency: function (todo, direction, array) {
-    console.log(array);
+    console.log([...array]);
 
     const nextTodo = this.getNextTodo(todo, direction, array);
-    console.log(nextTodo);
-    /*
+
     if (!nextTodo) {
       return false;
     }
 
-    giveTodoNewDeadline(todo, nextTodo.deadline);
+    todo.deadline = nextTodo.deadline;
 
-    switchTodosInArray(todo, nextTodo, array);
-    */
+    todoStorage.switchTodosInArray(todo, nextTodo, array);
   },
 
   getNextTodo: function (todo, direction, array) {
@@ -27,7 +26,8 @@ const movement = {
       console.log(`ERROR direction value: ${direction} is invalid!`);
     }
     let nextTodoIndex = todo.index + directionValue;
-    return todoStorage.getTodoFromId(nextTodoIndex);
+    console.log(nextTodoIndex);
+    return todoUtil.getTodoFromIndex(nextTodoIndex);
   },
 };
 

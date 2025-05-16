@@ -56,10 +56,12 @@ class TodoStorage {
     this.#todoArray.push(newTodo);
   }
 
-  getTodoFromId(idValue) {
-    return this.todoArray.find((element) => {
-      return element.id == idValue;
-    });
+  switchTodosInArray(todo, otherTodo, array) {
+    console.log(array);
+    const temp = array[todo.index];
+    array[todo.index] = array[otherTodo.index];
+    array[otherTodo.index] = temp;
+    console.log(array);
   }
 }
 
