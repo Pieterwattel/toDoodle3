@@ -42,14 +42,12 @@ class TodoStorage {
           `newTodo "${newTodo.title}" dateSpecifiedByUser is invalid`,
         );
         return;
-      case isValid(!newTodo.deadline):
-        console.log(
-          `newTodo "${newTodo.title}" dateSpecifiedByUser is invalid`,
-        );
+      case isValid(!newTodo.lastDayOfDeadline):
+        console.log(`newTodo "${newTodo.title}" lastDayOfDeadline is invalid`);
         return;
       case typeof newTodo.finished != 'boolean':
         console.log(
-          `newTodo "${newTodo.title}" dateSpecifiedByUser is invalid`,
+          `newTodo "${newTodo.title}" newTodo.finished property is invalid`,
         );
         return;
     }
