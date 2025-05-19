@@ -20,7 +20,7 @@ let testingIIFE = (function () {
     {
       title: 'todoNextYear',
       importance: 2,
-      lastDayOfDeadline: '2026 - 01 - 01',
+      urgency: 3,
       category: 'thing1',
     },
     {
@@ -38,7 +38,7 @@ let testingIIFE = (function () {
     {
       title: 'veryChillTodo',
       importance: 3,
-      lastDayOfDeadline: '2025 - 12 - 01',
+      urgency: 2,
       category: 'thing1',
     },
     {
