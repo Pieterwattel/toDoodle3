@@ -19,37 +19,37 @@ let testingIIFE = (function () {
   const todoTestArray = [
     {
       title: 'todoNextYear',
-      importance: 2,
+      importance: 'high',
       urgency: 3,
       category: 'thing1',
     },
     {
       title: 'todoToday',
-      importance: 1,
+      importance: 'low',
       lastDayOfDeadline: '2025, 5, 13',
       category: 'thing1',
     },
     {
       title: 'todoInThePast',
-      importance: 2,
+      importance: 'high',
       lastDayOfDeadline: '2024 - 10 - 09',
       category: 'thing1',
     },
     {
       title: 'veryChillTodo',
-      importance: 3,
+      importance: 'low',
       urgency: 2,
       category: 'thing1',
     },
     {
       title: 'todoLaterToday',
-      importance: 3,
+      importance: 'high',
       lastDayOfDeadline: '2025 - 5 - 13',
       category: 'thing2',
     },
     {
       title: 'todoTomorrow',
-      importance: 3,
+      importance: 'high',
       lastDayOfDeadline: '2025 - 5 - 14',
       category: 'thing2',
     },

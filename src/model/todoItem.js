@@ -1,5 +1,14 @@
 import { todoUtil } from './todoUtils.js';
 
+/**
+ * @param {string} title - The user's name (required).
+ * @param {number} importance - The user's age (must be positive).
+ * @param {string} category - Optional flag for admin rights.
+ * @param {number} urgency - value can be 1, 2 or 3. dataObj needs either an urgency value OR a lastDayOfDeadline value
+ * @param {lastDayOfDeadline}
+ *
+ *
+ */
 class TodoItem {
   #id;
   #index;

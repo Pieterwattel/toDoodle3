@@ -34,7 +34,7 @@ class TodoStorage {
       case typeof newTodo.id != 'number':
         console.log(`newTodo "${newTodo.title}" id is invalid`);
         return;
-      case typeof newTodo.importance != 'number':
+      case typeof newTodo.importance != 'string':
         console.log(`newTodo "${newTodo.title}" importance is invalid`);
         return;
       case typeof newTodo.dateSpecifiedByUser != 'boolean':
