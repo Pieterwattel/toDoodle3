@@ -9,7 +9,45 @@
 </head>
 
 <body>
-    todo list
+    <div id="mainContent">
+        <div id="leftSideDiv">
+            <label for="title">title</label>
+            <input type="text" name="title" id="titleInput" value="hmmm">
+
+            <label for="importance">importance</label>
+            <select name="importance" id="importanceSelector">
+                <option value="high">high</option>
+                <option value="low">low</option>
+            </select>
+
+            <label for="urgency">urgency</label>
+            <select name="urgency" id="urgencySelector">
+                <option value="1">urgent</option>
+                <option value="2">soon</option>
+                <option value="3">casual</option>
+                <option value="4">give date</option>
+            </select>
+            <input type="date" name="urgencyDate" id="urgencyDateInput">
+
+            <label for="category">category</label>
+            <select name="category" id="categorySelector">
+                <option value="">new category</option>
+            </select>
+            <input type="text" id="categoryInput">
+
+            <label for="description">description</label>
+            <textarea name="description" id="descriptionInput"></textarea>
+
+            <button id="todoCreationBtn">createTodo</button>
+
+            <div id="todoDetailDisplay"></div>
+        </div>
+
+        <div id="rightSideDiv">
+            <table id="todoDisplay">
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>
