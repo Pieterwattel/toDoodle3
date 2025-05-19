@@ -7,8 +7,10 @@ const todoUtil = {
 
     if (dataObj.lastDayOfDeadline) {
       newDate = dates.getDateFnsDate(dataObj.lastDayOfDeadline);
+      dataObj.dateSpecifiedByUser = true;
     } else {
       newDate = dates.getDeadlineDependingOnUrgency(dataObj.urgency);
+      dataObj.dateSpecifiedByUser = false;
     }
     return newDate;
   },

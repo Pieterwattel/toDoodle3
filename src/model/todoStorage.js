@@ -27,27 +27,27 @@ class TodoStorage {
   }
 
   addNewTodo(newTodo) {
-    switch (false) {
-      case typeof newTodo.title === 'string':
+    switch (true) {
+      case typeof newTodo.title != 'string':
         console.log(`newTodo "${newTodo.title}" title is invalid`);
         return;
-      case typeof newTodo.id === 'number':
+      case typeof newTodo.id != 'number':
         console.log(`newTodo "${newTodo.title}" id is invalid`);
         return;
-      case typeof newTodo.importance === 'number':
+      case typeof newTodo.importance != 'number':
         console.log(`newTodo "${newTodo.title}" importance is invalid`);
         return;
-      case typeof newTodo.dateSpecifiedByUser === 'boolean':
+      case typeof newTodo.dateSpecifiedByUser != 'boolean':
         console.log(
           `newTodo "${newTodo.title}" dateSpecifiedByUser is invalid`,
         );
         return;
-      case isValid(newTodo.deadline):
+      case isValid(!newTodo.deadline):
         console.log(
           `newTodo "${newTodo.title}" dateSpecifiedByUser is invalid`,
         );
         return;
-      case typeof newTodo.finished === 'boolean':
+      case typeof newTodo.finished != 'boolean':
         console.log(
           `newTodo "${newTodo.title}" dateSpecifiedByUser is invalid`,
         );
