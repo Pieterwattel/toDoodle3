@@ -1,6 +1,7 @@
 import { TodoItem } from '../model/todoItem';
 import { todoStorage } from '../model/todoStorage';
 import { movement } from '../model/todoMovement';
+import { frontendUtils } from '../view/frontendUtils';
 
 class TodoController {
   constructor() {}
@@ -14,43 +15,8 @@ class TodoController {
   }
 
   formatFrontendTodoForBackend(dataObj) {
-    let todoDataForBackend = {};
+    let todoDataForBackend = frontendUtils.doTodoFormatting(dataObj);
 
-    for (const key in dataObj) {
-      const value = dataObj[key];
-      switch (key) {
-        case 'titleInput':
-          todoDataForBackend.title = value;
-          break;
-        case 'importanceSelector':
-          todoDataForBackend.importance = value;
-          break;
-        case 'urgencySelector':
-          if (value == 4) {
-            console.log('yes');
-            todoDataForBackend.lastDayOfDeadline = dataObj.urgencyDateInput;
-          } else {
-            todoDataForBackend.urgency = Number(value);
-          }
-          break;
-        case 'urgencyDateInput':
-          break;
-        case 'categorySelector':
-          if (value == 'newCategory') {
-            todoDataForBackend.category = dataObj.categoryInput;
-          } else {
-            todoDataForBackend.category = value;
-          }
-          break;
-        case 'categoryInput':
-          break;
-        case 'descriptionInput':
-          todoDataForBackend.description = value;
-          break;
-        default:
-          console.log('other key: ' + key);
-      }
-    }
     return todoDataForBackend;
   }
 
