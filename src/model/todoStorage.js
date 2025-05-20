@@ -87,6 +87,9 @@ class TodoStorage {
       collectionArray.forEach((element) => {
         if (element[keySpec] != valueSpec) {
           //remove element
+          collectionArray = collectionArray.filter(
+            (element) => element[keySpec] == valueSpec,
+          );
         }
       });
     }
