@@ -17,7 +17,6 @@ class EventListeners {
     constructor() {}
 
     static getNewTodoData() {
-      console.log('accessed');
       const todoInputObj = {};
       const inputElements = domElements.todoCreationInputs;
       for (const element in inputElements) {
@@ -27,13 +26,13 @@ class EventListeners {
         const value = domNode.value;
         todoInputObj[key] = value;
       }
-      console.log(todoInputObj);
+      return todoInputObj;
     }
   };
 
   createEventListeners() {
     domElements.todoCreationBtn.addEventListener('click', (e) => {
-      const newTodoData = this.DomData.getNewTodoData();
+      console.log(this.DomData.getNewTodoData());
       console.log(newTodoData);
     });
   }

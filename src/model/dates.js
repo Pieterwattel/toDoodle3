@@ -15,7 +15,7 @@ class Dates {
     //dates need to be formatted from:
     //2020-01-05 to 2020, 1, 5
 
-    let dashRegex = /( - )/g;
+    let dashRegex = /(-)/g;
     let dateWithCommas = htmlDate.replace(dashRegex, ', ');
 
     let precedingZeroRegex = /(, 0)/g;

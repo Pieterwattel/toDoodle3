@@ -34,19 +34,20 @@ let testingIIFE = (function () {
     {
       title: 'todoLaterToday',
       importance: 'high',
-      lastDayOfDeadline: '2025 - 5 - 13',
+      lastDayOfDeadline: '2025-5-13',
       category: 'thing2',
     },
     {
       title: 'todoTomorrow',
       importance: 'high',
-      lastDayOfDeadline: '2025 - 5 - 14',
+      lastDayOfDeadline: '2025-5-14',
       category: 'thing2',
     },
   ];
 
   console.log('--------------------------\nclick "createTodo":');
   eventlisteners.DomData.getNewTodoData();
+
   /*
   console.log('--------------------------\ncreate todos:');
   let i = 0;
