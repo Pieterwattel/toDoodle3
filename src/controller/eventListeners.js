@@ -1,4 +1,5 @@
 import { domElements } from '../view/domElements';
+import { todoController } from './todoController';
 
 class EventListeners {
   constructor() {
@@ -32,8 +33,10 @@ class EventListeners {
 
   createEventListeners() {
     domElements.todoCreationBtn.addEventListener('click', (e) => {
-      console.log(this.DomData.getNewTodoData());
-      console.log(newTodoData);
+      const newTodoData = this.DomData.getNewTodoData();
+      const todoDataForBackend =
+        todoController.formatFrontendTodoForBackend(newTodoData);
+      todoController.createTodo(todoDataForBackend);
     });
   }
 }

@@ -13,7 +13,46 @@ class TodoController {
     return this.instance;
   }
 
-  formatFrontendTodoForBackend(dataObj) {}
+  formatFrontendTodoForBackend(dataObj) {
+    let todoDataForBackend = {};
+
+    for (const key in dataObj) {
+      const value = dataObj[key];
+      switch (key) {
+        case 'titleInput':
+          todoDataForBackend.title = value;
+          break;
+        case 'importanceSelector':
+          todoDataForBackend.importance = value;
+          break;
+        case 'urgencySelector':
+          if (value == 4) {
+            console.log('yes');
+            todoDataForBackend.lastDayOfDeadline = dataObj.urgencyDateInput;
+          } else {
+            todoDataForBackend.urgency = Number(value);
+          }
+          break;
+        case 'urgencyDateInput':
+          break;
+        case 'categorySelector':
+          if (value == 'newCategory') {
+            todoDataForBackend.category = dataObj.categoryInput;
+          } else {
+            todoDataForBackend.category = value;
+          }
+          break;
+        case 'categoryInput':
+          break;
+        case 'descriptionInput':
+          todoDataForBackend.description = value;
+          break;
+        default:
+          console.log('other key: ' + key);
+      }
+    }
+    return todoDataForBackend;
+  }
 
   /**
    * parameter is 1 object literal, with the following properties:

@@ -8,6 +8,7 @@ class TodoItem {
   #category;
   #lastDayOfDeadline;
   #dateSpecifiedByUser;
+  #description;
   #finished;
 
   constructor(dataObj) {
@@ -19,6 +20,7 @@ class TodoItem {
 
     this.#dateSpecifiedByUser = dataObj.lastDayOfDeadline ? true : false;
     this.#lastDayOfDeadline = todoUtil.getTodoDate(dataObj);
+    this.#description = dataObj.description;
 
     this.#finished = dataObj.finished ? foo : (dataObj.finished = false);
   }
@@ -63,6 +65,10 @@ class TodoItem {
 
   get dateSpecifiedByUser() {
     return this.#dateSpecifiedByUser;
+  }
+
+  get description() {
+    return this.#description;
   }
 
   get finished() {

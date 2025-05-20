@@ -46,9 +46,12 @@ let testingIIFE = (function () {
   ];
 
   console.log('--------------------------\nclick "createTodo":');
-  eventlisteners.DomData.getNewTodoData();
+  const newTodoData = eventlisteners.DomData.getNewTodoData();
+  const todoDataForBackend =
+    todoController.formatFrontendTodoForBackend(newTodoData);
+  console.log(todoDataForBackend);
+  todoController.createTodo(todoDataForBackend);
 
-  /*
   console.log('--------------------------\ncreate todos:');
   let i = 0;
   todoTestArray.forEach((element) => {
@@ -61,22 +64,11 @@ let testingIIFE = (function () {
   console.log([...todoStorage.todoArray]);
 
   console.log('--------------------------');
+  const todoSpecifications1 = {
+    title: 'todoTomorrow',
+  };
   console.log('move todoTomorrow one place earlier');
-  let todo = todoUtil.getTodoFromId(5);
+  let todo = todoController.getTodosBySpecifications(todoSpecifications1);
   todoController.moveTodoInUrgency(todo, 'earlier');
   console.log([...todoStorage.todoArray]);
-
-  const todoSpecifications1 = {
-    id: 2,
-  };
-
-  const todoSpecifications2 = {
-    importance: 'high',
-  };
-
-  console.log('get todo with id 2');
-  console.log(todoController.getTodosBySpecifications(todoSpecifications1));
-  console.log('get todos with importance high');
-  console.log(todoController.getTodosBySpecifications(todoSpecifications2));
-  */
 })();
