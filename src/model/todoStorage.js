@@ -75,25 +75,29 @@ class TodoStorage {
    * @param {boolean} dateSpecifiedByUser
    * @param {date} lastDayOfDeadline
    * @param {boolean} finished
+   *
+   * will return an array of multiple objects,
+   * or a single object (no array)
    */
   getTodosBySpecifications(obj) {
-    let collectionArray = this.todoArray;
+    let todoCollectionArray = this.todoArray;
 
     //this is a loop that runs one by one through the specifications
     for (const keySpec in obj) {
       const valueSpec = obj[keySpec];
       //this loop runs through the array,
       //and removes every elements that does not fit the requirements
-      collectionArray.forEach((element) => {
+      todoCollectionArray.forEach((element) => {
         if (element[keySpec] != valueSpec) {
           //remove element
-          collectionArray = collectionArray.filter(
+          todoCollectionArray = todoCollectionArray.filter(
             (element) => element[keySpec] == valueSpec,
           );
         }
       });
     }
-    return collectionArray;
+    console.log(todoCollectionArray);
+    return todoCollectionArray;
   }
 }
 

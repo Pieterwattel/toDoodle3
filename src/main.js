@@ -1,7 +1,5 @@
 import './styles.css';
-import { parseISO } from 'date-fns';
 import { todoController } from './controller/todoController';
-import { todoUtil } from './model/todoUtils';
 import { todoStorage } from './model/todoStorage';
 import { eventlisteners } from './controller/eventListeners';
 
@@ -68,7 +66,7 @@ let testingIIFE = (function () {
     title: 'todoTomorrow',
   };
   console.log('move todoTomorrow one place earlier');
-  let todo = todoController.getTodosBySpecifications(todoSpecifications1);
+  let todo = todoController.getTodosBySpecifications(todoSpecifications1)[0];
   todoController.moveTodoInUrgency(todo, 'earlier');
   console.log([...todoStorage.todoArray]);
 })();
