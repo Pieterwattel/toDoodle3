@@ -3,17 +3,7 @@ import { parseISO } from 'date-fns';
 import { todoController } from './controller/todoController';
 import { todoUtil } from './model/todoUtils';
 import { todoStorage } from './model/todoStorage';
-
-/*
-        this.#id = dataObj.id;
-        this.#title = dataObj.title;
-        this.#importance = dataObj.importance;
-
-        this.#lastDayOfDeadline = dataObj.lastDayOfDeadline;
-        this.#dateSpecifiedByUser = dataObj.dateSpecifiedByUser;
-
-        this.#finished = dataObj.finished;
-*/
+import { eventlisteners } from './controller/eventListeners';
 
 let testingIIFE = (function () {
   const todoTestArray = [
@@ -32,7 +22,7 @@ let testingIIFE = (function () {
     {
       title: 'todoInThePast',
       importance: 'high',
-      lastDayOfDeadline: '2024 - 10 - 09',
+      urgency: 1,
       category: 'thing1',
     },
     {
@@ -55,6 +45,9 @@ let testingIIFE = (function () {
     },
   ];
 
+  console.log('--------------------------\nclick "createTodo":');
+  eventlisteners.DomData.getNewTodoData();
+  /*
   console.log('--------------------------\ncreate todos:');
   let i = 0;
   todoTestArray.forEach((element) => {
@@ -72,8 +65,17 @@ let testingIIFE = (function () {
   todoController.moveTodoInUrgency(todo, 'earlier');
   console.log([...todoStorage.todoArray]);
 
-  console.log(
-    "--------------------------\ndisplay all todo's of category thing2",
-  );
-  console.log(todoController.getTodosByCategory('thing1'));
+  const todoSpecifications1 = {
+    id: 2,
+  };
+
+  const todoSpecifications2 = {
+    importance: 'high',
+  };
+
+  console.log('get todo with id 2');
+  console.log(todoController.getTodosBySpecifications(todoSpecifications1));
+  console.log('get todos with importance high');
+  console.log(todoController.getTodosBySpecifications(todoSpecifications2));
+  */
 })();

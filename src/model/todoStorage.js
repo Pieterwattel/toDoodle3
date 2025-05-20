@@ -14,16 +14,21 @@ class TodoStorage {
   constructor() {}
 
   get todoArray() {
-    this.#todoArray.sort((firstElement, secondElement) => {
+    const array = this.orderArrayByDate(this.#todoArray);
+    return array;
+  }
+
+  orderArrayByDate(array) {
+    array.sort((firstElement, secondElement) => {
       return firstElement.deadline - secondElement.deadline;
     });
 
-    for (let i = this.#todoArray.length; i > 0; i--) {
+    for (let i = array.length; i > 0; i--) {
       let j = i - 1;
-      this.#todoArray[j].index = j;
+      array[j].index = j;
     }
 
-    return this.#todoArray;
+    return array;
   }
 
   addNewTodo(newTodo) {
@@ -60,15 +65,32 @@ class TodoStorage {
     array[otherTodo.index] = temp;
   }
 
-  getTodosByCategory(categoryName, array) {
-    const categoryArray = [];
-    for (let i = array.length; i > 0; i--) {
-      let currentElement = array[i - 1];
-      if (currentElement.category == categoryName) {
-        categoryArray.unshift(currentElement);
-      }
+  /**
+   * parameter is 1 object literal, with any the following keys, followed with the correct data type value
+   * @param {number} id
+   * @param {number} index
+   * @param {string} title
+   * @param {string} importance
+   * @param {string} category
+   * @param {boolean} dateSpecifiedByUser
+   * @param {date} lastDayOfDeadline
+   * @param {boolean} finished
+   */
+  getTodosBySpecifications(obj) {
+    let collectionArray = this.todoArray;
+
+    //this is a loop that runs one by one through the specifications
+    for (const keySpec in obj) {
+      const valueSpec = obj[keySpec];
+      //this loop runs through the array,
+      //and removes every elements that does not fit the requirements
+      collectionArray.forEach((element) => {
+        if (element[keySpec] != valueSpec) {
+          //remove element
+        }
+      });
     }
-    return categoryArray;
+    return collectionArray;
   }
 }
 

@@ -15,14 +15,6 @@ const todoUtil = {
     return newDate;
   },
 
-  getTodoFromId: function (idValue) {
-    const array = todoStorage.todoArray;
-
-    return array.find((element) => {
-      return element.id == idValue;
-    });
-  },
-
   getTodoFromIndex: function (indexValue) {
     const array = todoStorage.todoArray;
 
@@ -30,6 +22,8 @@ const todoUtil = {
       return element.index == indexValue;
     });
   },
+
+  formatFrontendTodoForBackend(dataObj) {},
 };
 
 export { todoUtil };

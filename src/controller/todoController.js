@@ -13,17 +13,18 @@ class TodoController {
     return this.instance;
   }
 
-  formatFrontendTodoForBackend(dataObj) {
-    this.createTodo();
-  }
+  formatFrontendTodoForBackend(dataObj) {}
 
   /**
    * parameter is 1 object literal, with the following properties:
    * @param {string} title
    * @param {string} importance - can be high or low
-   * @param {string} category - Optional flag for admin rights.
-   * @param {number} urgency - value can be 1, 2 or 3. dataObj needs either an urgency value OR a lastDayOfDeadline value
-   * @param {date} lastDayOfDeadline - can also be an urgency value
+   * @param {string} category - can be new or existing category
+   *
+   *
+   * !!dataObj needs either an urgency value OR a lastDayOfDeadline value
+   * @param {number} urgency - value can be 1, 2 or 3.
+   * @param {date} lastDayOfDeadline - date
    */
   createTodo(dataObj) {
     let newTodo = TodoItem.create(dataObj);
@@ -34,8 +35,19 @@ class TodoController {
     movement.moveTodoInUrgency(todo, direction, todoStorage.todoArray);
   }
 
-  getTodosByCategory(categoryName) {
-    return todoStorage.getTodosByCategory(categoryName, todoStorage.todoArray);
+  /**
+   * parameter is 1 object literal, with any the following keys, followed with the correct data type value
+   * @param {number} id
+   * @param {number} index
+   * @param {string} title
+   * @param {string} importance
+   * @param {string} category
+   * @param {boolean} dateSpecifiedByUser
+   * @param {date} lastDayOfDeadline
+   * @param {boolean} finished
+   */
+  getTodosBySpecifications(dataObj) {
+    return todoStorage.getTodosBySpecifications(dataObj);
   }
 }
 
