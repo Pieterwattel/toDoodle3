@@ -42,10 +42,10 @@ body {
 
 #todoTools,
 #todoActions {
-  min-width: 352px;
-  max-width: 352px;
+  min-width: 320px;
+  max-width: 320px;
 
-  height: 460px !important;
+  height: 45vh;
 }
 
 #todoOverview {
