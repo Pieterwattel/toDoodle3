@@ -1,5 +1,4 @@
 * {
-  border: 1px solid orange;
 }
 
 body {
@@ -12,6 +11,9 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  padding-left: 4vw;
+  padding-right: 4vw;
 }
 
 #todoControls {
@@ -44,12 +46,13 @@ body {
 }
 
 #todoOverview {
-  width: 100%;
+  max-width: 90%;
+  max-height: 95vh;
+  margin-left: 50px;
 }
 
-#todoOverview > {
-  min-width: 45%;
-  min-height: 45%;
+#todoOverview > * {
+  overflow: auto;
 }
 
 #todoOverview > * {
@@ -82,7 +85,8 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 10px; /* optional spacing */
+  gap: 30px; /* optional spacing */
+  padding: 0px;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -96,6 +100,16 @@ body {
   #mainContent {
     display: flex;
     flex-direction: column;
+    padding-left: 0;
+    align-items: center;
+  }
+
+  #todoOverview {
+    margin-left: 0px;
+  }
+
+  #todoOverview > * {
+    min-width: 300px;
   }
 }
 
@@ -103,6 +117,11 @@ body {
 .todoControls > * :not(label) {
   border: 1px solid rgb(92, 92, 92);
   border-radius: 0.2em;
+}
+
+button {
+  font-weight: 700;
+  font-size: medium;
 }
 
 /*tr {
