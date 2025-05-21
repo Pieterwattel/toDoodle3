@@ -1,4 +1,111 @@
-tr {
+* {
+  border: 1px solid orange;
+}
+
+body {
+  background-image: url('./otherFiles/gridBackground2.jpg');
+  background-size: auto 100%;
+}
+
+/*content placement*/
+#mainContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#todoControls {
+}
+
+.todoControls {
+  display: flex;
+  flex-direction: column;
+  padding: calc(60px);
+  padding-top: 30px;
+}
+
+#todoCreation,
+#todoDetails {
+  justify-content: center;
+  align-items: center;
+}
+
+/*sizing*/
+#todoControls {
+  width: 35%;
+}
+
+#todoCreation,
+#todoDetails {
+  min-width: 352px;
+  max-width: 352px;
+
+  height: 460px !important;
+}
+
+#todoOverview {
+  width: 100%;
+}
+
+#todoOverview > {
+  min-width: 45%;
+  min-height: 45%;
+}
+
+#todoOverview > * {
+  height: 100%;
+  width: 100%;
+}
+
+/*backgrounds*/
+#todoCreation {
+  background-image: url('./otherFiles/todoFrame1.png');
+  background-size: 100% 100%;
+}
+
+#todoDetails {
+  background-image: url('./otherFiles/todoFrame2.png');
+  background-size: 100% 100%;
+}
+
+/*container-relative placements*/
+#todoOverview {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 10px;
+  align-items: start;
+  justify-items: start;
+}
+
+#todoOverview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px; /* optional spacing */
+}
+
+@media only screen and (max-width: 1000px) {
+  #todoControls {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  #mainContent {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/*detail formatting*/
+.todoControls > * :not(label) {
+  border: 1px solid rgb(92, 92, 92);
+  border-radius: 0.2em;
+}
+
+/*tr {
   background-color: red;
   border: 2px solid grey;
   box-shadow: inset 1px 1px 5px black;
@@ -49,15 +156,10 @@ div {
   height: 0;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  background-image: url('./otherFiles/gridBackground1.jpg');
-  background-size: contain;
-}
+
 
 label {
   box-shadow: 0px 0px 30px white;
   background-color: white;
 }
+*/

@@ -10,43 +10,50 @@
 
 <body>
     <div id="mainContent">
-        <div id="leftSideDiv">
-            <label for="title">title</label>
-            <input type="text" name="title" id="titleInput" value="hmmm">
+        <div id="todoControls">
+            <div id="todoCreation">
+                <div class="todoControls">
+                    <label for=" title">title</label>
+                    <input type="text" name="title" id="titleInput" value="hmmm">
+                    <br>
+                    <label for="importance">importance</label>
+                    <select name="importance" id="importanceSelector">
+                        <option value="high">high</option>
+                        <option value="low">low</option>
+                    </select>
+                    <br>
+                    <label for="urgency">urgency</label>
+                    <select name="urgency" id="urgencySelector">
+                        <option value="1">urgent</option>
+                        <option value="2">soon</option>
+                        <option value="3">casual</option>
+                        <option value="4">&#8675;&#8675; give date &#8675;&#8675;</option>
+                    </select>
+                    <input type="date" name="urgencyDate" id="urgencyDateInput" value="05-22-2005">
+                    <br>
+                    <label for=" category">category</label>
+                    <select name="category" id="categorySelector">
+                        <option value="newCategory">&#8675;&#8675; new category &#8675;&#8675;</option>
+                    </select>
+                    <input type="text" id="categoryInput" value="newCategoryName">
+                    <br>
+                    <label for="description">description</label>
+                    <textarea name="description" id="descriptionInput"> test description</textarea>
+                    <br>
+                    <button id="todoCreationBtn">createTodo</button>
+                </div>
+            </div>
 
-            <label for="importance">importance</label>
-            <select name="importance" id="importanceSelector">
-                <option value="high">high</option>
-                <option value="low">low</option>
-            </select>
-
-            <label for="urgency">urgency</label>
-            <select name="urgency" id="urgencySelector">
-                <option value="1">urgent</option>
-                <option value="2">soon</option>
-                <option value="3">casual</option>
-                <option value="4">&#8675;&#8675; give date &#8675;&#8675;</option>
-            </select>
-            <input type="date" name="urgencyDate" id="urgencyDateInput" value="05-22-2005>
-
-            <label for=" category">category</label>
-            <select name="category" id="categorySelector">
-                <option value="newCategory">&#8675;&#8675; new category &#8675;&#8675;</option>
-            </select>
-            <input type="text" id="categoryInput" value="newCategoryName">
-
-            <label for="description">description</label>
-            <textarea name="description" id="descriptionInput"> test description</textarea>
-            <br>
-            <button id="todoCreationBtn">createTodo</button>
-
-            <div id="todoDetailDisplay"></div>
+            <div id="todoDetails">
+                <div class="todoControls"> </div>
+            </div>
         </div>
 
-        <div id="rightSideDiv">
-            <table id="todoDisplay">
-                hello
-            </table>
+        <div id="todoOverview">
+            <div id="importantUrgent">a</div>
+            <div id="importantNotUrgent">b</div>
+            <div id="notImportantUrgent">c</div>
+            <div id="notImportantNotUrgent">d</div>
         </div>
     </div>
 </body>
