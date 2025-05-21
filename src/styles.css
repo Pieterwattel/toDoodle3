@@ -23,8 +23,8 @@ body {
   padding-top: 30px;
 }
 
-#todoCreation,
-#todoDetails {
+#todoTools,
+#todoActions {
   justify-content: center;
   align-items: center;
 }
@@ -38,8 +38,8 @@ body {
   width: 35%;
 }
 
-#todoCreation,
-#todoDetails {
+#todoTools,
+#todoActions {
   min-width: 352px;
   max-width: 352px;
 
@@ -87,12 +87,12 @@ body {
 }
 
 /*backgrounds*/
-#todoCreation {
-  background-image: url('./otherFiles/todoFrame1.png');
+#todoTools {
+  background-image: url('./otherFiles/todoFrame1WhiteBg.png');
   background-size: 100% 100%;
 }
 
-#todoDetails {
+#todoActions {
   background-image: url('./otherFiles/todoFrame2.png');
   background-size: 100% 100%;
 }
