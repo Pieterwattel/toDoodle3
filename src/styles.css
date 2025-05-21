@@ -80,6 +80,12 @@ body {
   height: 30%;
 }
 
+.lowersection {
+  display: flex;
+  height: 93%;
+  align-items: center;
+}
+
 /*backgrounds*/
 #todoCreation {
   background-image: url('./otherFiles/todoFrame1.png');
@@ -188,12 +194,14 @@ button {
 
 .lowersection {
   display: flex;
-  height: 95%;
   align-items: center;
 }
 
 .bar {
   text-align: center;
+  font-weight: 700;
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /*tr {
