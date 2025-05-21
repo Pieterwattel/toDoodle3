@@ -1,3 +1,7 @@
+* {
+  border: 1px solid orange;
+}
+
 body {
   height: 100vh;
   width: 100vw;
@@ -5,7 +9,8 @@ body {
   background-size: auto 100%;
 }
 
-/*content placement*/
+/* -content placement- */
+/* #region */
 #mainContent {
   display: flex;
   flex-direction: row;
@@ -15,7 +20,16 @@ body {
   padding-right: 4vw;
 }
 
-#todoControls {
+#todoActions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3vh;
+}
+
+#todoActions button {
+  min-height: 6%;
 }
 
 .todoControls {
@@ -23,10 +37,19 @@ body {
   flex-direction: column;
   padding: calc(60px);
   padding-top: 30px;
+  justify-content: space-between;
+  height: auto;
+  gap: 2vh;
+}
+
+.todoControls div {
+  display: flex;
+  flex-direction: column;
 }
 
 #todoTools,
-#todoActions {
+#todoActions,
+#todoControls {
   justify-content: center;
   align-items: center;
 }
@@ -35,17 +58,18 @@ body {
   overflow: auto;
 }
 
-/*sizing*/
+/* #endregion*/
+
+/* -sizing-*/
+/* #region */
 #todoControls {
   width: 35%;
 }
 
 #todoTools,
 #todoActions {
-  min-width: 320px;
-  max-width: 320px;
-
-  height: 45vh;
+  width: 300px;
+  height: 48vh;
 }
 
 #todoOverview {
@@ -87,10 +111,12 @@ body {
   height: 93%;
   align-items: center;
 }
+/* #endregion */
 
-/*backgrounds*/
+/* -backgrounds- */
+/* #region */
 #todoTools {
-  background-image: url('./otherFiles/todoFrame1WhiteBg.png');
+  background-image: url('./otherFiles/todoFrame1.png');
   background-size: 100% 100%;
 }
 
@@ -142,8 +168,10 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
 }
+/* #endregion */
 
-/*media queries*/
+/* -media queries- */
+/* #region */
 @media only screen and (max-width: 1000px) {
   #todoControls {
     width: 100%;
@@ -168,11 +196,11 @@ body {
     min-width: 300px;
   }
 }
+/* #endregion */
 
-/*detail formatting*/
+/* -specific formatting- */
+/* #region */
 .todoControls > * :not(label) {
-  border: 1px solid rgb(87, 85, 85);
-  border-radius: 0.2em;
 }
 
 #todoOverview > * {
@@ -182,6 +210,14 @@ body {
 button {
   font-weight: 700;
   font-size: medium;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#todoActions button {
+  padding: 7px;
 }
 
 #sidebar > * {
@@ -206,61 +242,10 @@ button {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/*tr {
-  background-color: red;
-  border: 2px solid grey;
-  box-shadow: inset 1px 1px 5px black;
-  display: flex;
+button {
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  line-height: 1.5em;
+  background-color: hsla(67, 95%, 95%, 0.5);
 }
 
-p {
-  margin: 0;
-}
-
-div {
-  min-height: 250px;
-}
-
-#mainContent {
-  display: flex;
-}
-
-#leftSideDiv {
-  display: flex;
-  flex-direction: column;
-  max-width: 180px;
-  max-height: 0%;
-  background-image: url('./otherFiles/todoFrame1.png');
-  background-size: 100% 100%;
-  padding: 14%;
-  border: 3px solid red;
-}
-
-#contentDiv {
-  display: flex;
-  flex-direction: column;
-  max-width: 90%;
-  background-image: url('./otherFiles/todoFrame2.png');
-  background-size: 100% 100%;
-  border: 20px solid rebeccapurple;
-}
-
-#rightSideDiv {
-  width: 100%;
-
-  background-image: url('./otherFiles/todoOrganisation.png');
-  background-size: 100% 100%;
-}
-
-#dc972c2f-992c-51c6-a634-8f72aeb33ee7 {
-  width: 0;
-  height: 0;
-}
-
-
-
-label {
-  box-shadow: 0px 0px 30px white;
-  background-color: white;
-}
-*/
+/* #endregion */
