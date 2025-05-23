@@ -1,4 +1,7 @@
 import { isValid } from 'date-fns';
+import { dates } from './dates';
+import { faIR } from 'date-fns/locale';
+import { todoUtil } from './todoUtils';
 
 class TodoStorage {
   static instance;
@@ -66,38 +69,90 @@ class TodoStorage {
   }
 
   /**
-   * parameter is 1 object literal, with any the following keys, followed with the correct data type value
-   * @param {number} id
-   * @param {number} index
-   * @param {string} title
-   * @param {string} importance
-   * @param {string} category
-   * @param {boolean} dateSpecifiedByUser
-   * @param {date} lastDayOfDeadline
-   * @param {boolean} finished
+   * parameter1 is 1 object literal, with any the following keys, followed with the correct data type value
+   * @param {object literal}:
+   *    @param {number} id optional
+   *    @param {number} index optional
+   *    @param {string} title optional
+   *    @param {string} importance optional
+   *    @param {string} category optional
+   *    @param {boolean} dateSpecifiedByUser optional
+   *    @param {date} lastDayOfDeadline optional
+   *    @param {boolean} finished optional
    *
-   * will return an array of multiple objects,
-   * or a single object (no array)
+   *
+   * parameter 2 is the array, if no parameter 2 is given, it will check the complete todo array
+   *@param {array} array optional
    */
-  getTodosBySpecifications(obj) {
-    let todoCollectionArray = this.todoArray;
+  getTodosBySpecifications(obj, array) {
+    //I know now (thanks to chatGPT) that this function can be WAY smaller.
+    //however, I choose to keep this monolith a as testament to a grueling coding session.
 
-    //this is a loop that runs one by one through the specifications
-    for (const keySpec in obj) {
-      const valueSpec = obj[keySpec];
-      //this loop runs through the array,
-      //and removes every elements that does not fit the requirements
-      todoCollectionArray.forEach((element) => {
-        if (element[keySpec] != valueSpec) {
-          //remove element
-          todoCollectionArray = todoCollectionArray.filter(
-            (element) => element[keySpec] == valueSpec,
-          );
+    /*
+    if (!array) {
+      array = [...this.todoArray];
+    }
+    let removalIndexes = [];
+
+    //this is a loop that runs one by one through the specificatied properties
+    for (let propertySpec in obj) {
+      const valueSpec = obj[propertySpec];
+
+      //collect all indexes of elements that need to be removed
+      array.forEach((element, index, array) => {
+        const elementValue = element[propertySpec];
+        if (
+          elementValue === undefined ||
+          elementValue.valueOf() != valueSpec.valueOf()
+        ) {
+          removalIndexes.push(index);
         }
       });
     }
-    console.log(todoCollectionArray);
-    return todoCollectionArray;
+
+    //get an ordered list of unique indexes for removal
+    const uniqueIndexes = todoUtil.removeDoublesFromArray(removalIndexes);
+    const orderedRemovalIndexes = uniqueIndexes.sort().reverse();
+
+    //remove indexes from array
+    let filteredArray = [...array];
+
+    console.log(orderedRemovalIndexes);
+    orderedRemovalIndexes.forEach((removalIndex) => {
+      filteredArray.splice(removalIndex, 1);
+    });
+
+    return filteredArray;
+    */
+
+    if (!array) {
+      array = [...this.todoArray];
+    }
+
+    const filteredArray = array.filter((item) => {
+      return Object.entries(obj).every(([key, value]) => {
+        const itemValue = item[key];
+
+        if (value instanceof Date && itemValue instanceof Date) {
+          return itemValue.valueOf() === value.valueOf();
+        }
+        return itemValue === value;
+      });
+    });
+
+    // If you want to return a single object if exactly one match is found:
+    if (filteredArray.length === 1) {
+      return filteredArray[0];
+    }
+    return filteredArray;
+  }
+
+  getImportanceTodos(value) {
+    const dataReq = {
+      importance: value,
+    };
+    const todos = this.getTodosBySpecifications(dataReq);
+    return todos;
   }
 }
 
