@@ -47,6 +47,8 @@ let testingIIFE = (function () {
     },
   ];
 
+  console.log(dates.currentDate);
+
   console.log('--------------------------\nclick "createTodo":');
   const newTodoData = eventlisteners.DomData.getNewTodoData();
   const todoDataForBackend =
@@ -69,10 +71,14 @@ let testingIIFE = (function () {
   todoStorage.getTodosBySpecifications({ importance: 'high' });
 
   console.log('--------------------------\nget all todos deadline today:');
-  todoStorage.getTodosBySpecifications({ lastDayOfDeadline: dates.currentDay });
+  todoStorage.getTodosBySpecifications({
+    lastDayOfDeadline: dates.currentDate,
+  });
 
-  console.log('--------------------------\nget all important todos');
-  todoStorage.getTodosBySpecifications({ lastDayOfDeadline: dates.currentDay });
+  console.log(
+    '--------------------------\nget all important todos with description "hello',
+  );
+  todoStorage.getTodosBySpecifications({ importance: 'high' });
 
   /*
   console.log(
