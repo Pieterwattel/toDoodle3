@@ -24,7 +24,6 @@ const movement = {
       console.log(`ERROR direction value: ${direction} is invalid!`);
     }
     let nextTodoIndex = todo.index + directionValue;
-    console.log(nextTodoIndex);
     const nextTodoArray = todoStorage.getTodosBySpecifications({
       index: nextTodoIndex,
     });

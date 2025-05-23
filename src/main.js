@@ -68,17 +68,23 @@ let testingIIFE = (function () {
   console.log([...todoStorage.todoArray]);
 
   console.log('--------------------------\nget all important todos:');
-  todoStorage.getTodosBySpecifications({ importance: 'high' });
-
+  console.log(todoStorage.getTodosBySpecifications({ importance: 'high' }));
   console.log('--------------------------\nget all todos deadline today:');
-  todoStorage.getTodosBySpecifications({
-    lastDayOfDeadline: dates.currentDate,
-  });
+  console.log(
+    todoStorage.getTodosBySpecifications({
+      lastDayOfDeadline: dates.currentDate,
+    }),
+  );
 
   console.log(
     '--------------------------\nget all important todos with description "hello',
   );
-  todoStorage.getTodosBySpecifications({ importance: 'high' });
+  console.log(
+    todoStorage.getTodosBySpecifications({
+      importance: 'high',
+      description: 'hello',
+    }),
+  );
 
   /*
   console.log(

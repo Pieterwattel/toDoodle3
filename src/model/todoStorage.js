@@ -141,9 +141,7 @@ class TodoStorage {
     });
 
     // If you want to return a single object if exactly one match is found:
-    if (filteredArray.length === 1) {
-      return filteredArray[0];
-    }
+
     return filteredArray;
   }
 

@@ -11,6 +11,10 @@ let domElements = {
   //
   todoCreationBtn: document.getElementById('todoCreationBtn'),
 
+  block1: document.getElementById('importantUrgent'),
+  block2: document.getElementById('notImportantUrgent'),
+  block3: document.getElementById('importantNotUrgent'),
+  block4: document.getElementById('notImportantNotUrgent'),
   //
 };
 

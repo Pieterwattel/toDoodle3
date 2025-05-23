@@ -2,6 +2,9 @@ import { TodoItem } from '../model/todoItem';
 import { todoStorage } from '../model/todoStorage';
 import { movement } from '../model/todoMovement';
 import { frontendUtils } from '../view/frontendUtils';
+import { domElements } from '../view/domElements';
+import { dates } from '../model/dates.js';
+import { endOfDay } from 'date-fns';
 
 class TodoController {
   constructor() {}
@@ -53,6 +56,27 @@ class TodoController {
    */
   getTodosBySpecifications(dataObj) {
     return todoStorage.getTodosBySpecifications(dataObj);
+  }
+
+  updateTodoOverview(array) {
+    let block1 = domElements.block1;
+    let block2 = domElements.block2;
+    let block3 = domElements.block3;
+    let block4 = domElements.block4;
+
+    const leftColumnArray = todoStorage.getImportanceTodos('low');
+    const rightColumnArray = todoStorage.getImportanceTodos('high');
+
+    //get all todo's that need to be done within a day:
+    const today = endOfDay(new Date());
+
+    console.log(today);
+
+    let todayArray = todoStorage.getTodosBySpecifications({
+      lastDayOfDeadline: today,
+      leftColumnArray,
+    });
+    console.log(todayArray);
   }
 }
 

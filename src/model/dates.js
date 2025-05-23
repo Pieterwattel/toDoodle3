@@ -43,6 +43,11 @@ class Dates {
         break;
     }
   }
+
+  datesAreEqual(date1, date2) {
+    console.log(date1, date2);
+    return date1.valueOf() == date2.valueOf();
+  }
 }
 
 const dates = Dates.getSingleton();
