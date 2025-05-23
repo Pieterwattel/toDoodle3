@@ -2,6 +2,8 @@ import './styles.css';
 import { todoController } from './controller/todoController';
 import { todoStorage } from './model/todoStorage';
 import { eventlisteners } from './controller/eventListeners';
+import { frontendUtils } from './view/frontendUtils';
+import { dates } from './model/dates';
 
 let testingIIFE = (function () {
   const todoTestArray = [
@@ -14,7 +16,7 @@ let testingIIFE = (function () {
     {
       title: 'todoToday',
       importance: 'low',
-      lastDayOfDeadline: '2025, 5, 13',
+      lastDayOfDeadline: '2025, 5, 23',
       category: 'thing1',
     },
     {
@@ -22,6 +24,7 @@ let testingIIFE = (function () {
       importance: 'high',
       urgency: 1,
       category: 'thing1',
+      description: 'hello',
     },
     {
       title: 'veryChillTodo',
@@ -32,8 +35,9 @@ let testingIIFE = (function () {
     {
       title: 'todoLaterToday',
       importance: 'high',
-      lastDayOfDeadline: '2025-5-13',
+      lastDayOfDeadline: '2025-5-23',
       category: 'thing2',
+      description: 'hello',
     },
     {
       title: 'todoTomorrow',
@@ -61,12 +65,27 @@ let testingIIFE = (function () {
   console.log('--------------------------\nplace array:');
   console.log([...todoStorage.todoArray]);
 
-  console.log('--------------------------');
+  console.log('--------------------------\nget all important todos:');
+  todoStorage.getTodosBySpecifications({ importance: 'high' });
+
+  console.log('--------------------------\nget all todos deadline today:');
+  todoStorage.getTodosBySpecifications({ lastDayOfDeadline: dates.currentDay });
+
+  console.log('--------------------------\nget all important todos');
+  todoStorage.getTodosBySpecifications({ lastDayOfDeadline: dates.currentDay });
+
+  /*
+  console.log(
+    '--------------------------\nmove todoTomorrow one place earlier',
+  );
   const todoSpecifications1 = {
     title: 'todoTomorrow',
   };
-  console.log('move todoTomorrow one place earlier');
   let todo = todoController.getTodosBySpecifications(todoSpecifications1)[0];
   todoController.moveTodoInUrgency(todo, 'earlier');
   console.log([...todoStorage.todoArray]);
+
+  console.log('--------------------------');
+  todoController.updateTodoOverview(todoStorage.todoArray);
+  */
 })();
