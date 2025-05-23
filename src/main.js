@@ -67,15 +67,6 @@ let testingIIFE = (function () {
   console.log('--------------------------\nplace array:');
   console.log([...todoStorage.todoArray]);
 
-  console.log('--------------------------\nget all important todos:');
-  console.log(todoStorage.getTodosBySpecifications({ importance: 'high' }));
-  console.log('--------------------------\nget all todos deadline today:');
-  console.log(
-    todoStorage.getTodosBySpecifications({
-      lastDayOfDeadline: dates.currentDate,
-    }),
-  );
-
   console.log(
     '--------------------------\nget all important todos with description "hello',
   );
@@ -85,8 +76,6 @@ let testingIIFE = (function () {
       description: 'hello',
     }),
   );
-
-  /*
   console.log(
     '--------------------------\nmove todoTomorrow one place earlier',
   );
@@ -99,5 +88,4 @@ let testingIIFE = (function () {
 
   console.log('--------------------------');
   todoController.updateTodoOverview(todoStorage.todoArray);
-  */
 })();
