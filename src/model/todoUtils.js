@@ -5,8 +5,8 @@ const todoUtil = {
   getTodoDate: function (dataObj) {
     let newDate = null;
 
-    if (dataObj.lastDayOfDeadline) {
-      newDate = dates.getDateFnsDate(dataObj.lastDayOfDeadline);
+    if (dataObj.doneBefore) {
+      newDate = dates.getDateFnsDate(dataObj.doneBefore);
       dataObj.dateSpecifiedByUser = true;
     } else {
       newDate = dates.getDeadlineDependingOnUrgency(dataObj.urgency);

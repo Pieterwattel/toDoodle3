@@ -6,7 +6,7 @@ class TodoItem {
   #title;
   #importance;
   #category;
-  #lastDayOfDeadline;
+  #doneBefore;
   #dateSpecifiedByUser;
   #description;
   #finished;
@@ -18,8 +18,8 @@ class TodoItem {
     this.#importance = dataObj.importance;
     this.#category = dataObj.category;
 
-    this.#dateSpecifiedByUser = dataObj.lastDayOfDeadline ? true : false;
-    this.#lastDayOfDeadline = todoUtil.getTodoDate(dataObj);
+    this.#dateSpecifiedByUser = dataObj.doneBefore ? true : false;
+    this.#doneBefore = todoUtil.getTodoDate(dataObj);
     this.#description = dataObj.description;
 
     this.#finished = dataObj.finished ? foo : (dataObj.finished = false);
@@ -55,12 +55,12 @@ class TodoItem {
     return this.#category;
   }
 
-  get lastDayOfDeadline() {
-    return this.#lastDayOfDeadline;
+  get doneBefore() {
+    return this.#doneBefore;
   }
 
-  set lastDayOfDeadline(value) {
-    this.#lastDayOfDeadline = value;
+  set doneBefore(value) {
+    this.#doneBefore = value;
   }
 
   get dateSpecifiedByUser() {

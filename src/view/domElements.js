@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 let domElements = {
   todoCreationInputs: {
     titleInput: document.getElementById('titleInput'),
@@ -51,11 +53,12 @@ let domElements = {
 
     //deadline
     if (todo.dateSpecifiedByUser) {
-      const lastDayOfDeadlineDiv = this.getDiv();
-      lastDayOfDeadlineDiv.textContent = `
-    - lastDayOfDeadline:\n
-    ${todo.lastDayOfDeadline}`;
-      this.todoDisplay.appendChild(lastDayOfDeadlineDiv);
+      const doneBeforeDiv = this.getDiv();
+      const date = format(todo.doneBefore, 'E d/M/yy');
+      doneBeforeDiv.textContent = `
+    - last day before deadline:\n
+    ${date}`;
+      this.todoDisplay.appendChild(doneBeforeDiv);
     }
   },
 };

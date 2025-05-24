@@ -17,7 +17,7 @@ const frontendUtils = {
         case 'urgencySelector':
           if (value == 4) {
             console.log('yes');
-            todoDataForBackend.lastDayOfDeadline = dataObj.urgencyDateInput;
+            todoDataForBackend.doneBefore = dataObj.urgencyDateInput;
           } else {
             todoDataForBackend.urgency = Number(value);
           }

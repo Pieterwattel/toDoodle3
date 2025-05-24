@@ -31,9 +31,9 @@ class TodoController {
    * @param {string} category - can be new or existing category
    *
    *
-   * !!dataObj needs either an urgency value OR a lastDayOfDeadline value
+   * !!dataObj needs either an urgency value OR a doneBefore value
    * @param {number} urgency - value can be 1, 2 or 3.
-   * @param {date} lastDayOfDeadline - date
+   * @param {date} doneBefore - date
    */
   createTodo(dataObj) {
     let newTodo = TodoItem.create(dataObj);
@@ -52,7 +52,7 @@ class TodoController {
    * @param {string} importance
    * @param {string} category
    * @param {boolean} dateSpecifiedByUser
-   * @param {date} lastDayOfDeadline
+   * @param {date} doneBefore
    * @param {boolean} finished
    */
   getTodosBySpecifications(dataObj) {
@@ -73,7 +73,7 @@ class TodoController {
 
     const importantToday = todoStorage.getTodosBySpecifications({
       importance: 'high',
-      lastDayOfDeadline: today,
+      doneBefore: today,
     });
 
     if (
@@ -83,7 +83,7 @@ class TodoController {
       display.fillInBlock(block1, importantToday);
 
       const importantOtherDays = todoStorage.todoArray.filter((element) => {
-        return dates.datesAreEqual(element.lastDayOfDeadline, today);
+        return dates.datesAreEqual(element.doneBefore, today);
       });
     }
   }

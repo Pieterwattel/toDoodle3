@@ -50,8 +50,8 @@ class TodoStorage {
           `newTodo "${newTodo.title}" dateSpecifiedByUser is invalid`,
         );
         return;
-      case isValid(!newTodo.lastDayOfDeadline):
-        console.log(`newTodo "${newTodo.title}" lastDayOfDeadline is invalid`);
+      case isValid(!newTodo.doneBefore):
+        console.log(`newTodo "${newTodo.title}" doneBefore is invalid`);
         return;
       case typeof newTodo.finished != 'boolean':
         console.log(
@@ -77,7 +77,7 @@ class TodoStorage {
    *    @param {string} importance optional
    *    @param {string} category optional
    *    @param {boolean} dateSpecifiedByUser optional
-   *    @param {date} lastDayOfDeadline optional
+   *    @param {date} doneBefore optional
    *    @param {boolean} finished optional
    *
    *

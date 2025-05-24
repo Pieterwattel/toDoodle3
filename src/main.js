@@ -10,14 +10,14 @@ let testingIIFE = (function () {
     {
       title: 'todoNextYear',
       importance: 'high',
-      lastDayOfDeadline: '2025-5-24',
+      doneBefore: '2025-5-24',
       category: 'thing1',
       description: 'these are some crazy plans.. I hope to see you soon',
     },
     {
       title: 'todoToday',
       importance: 'high',
-      lastDayOfDeadline: '2025, 5, 24',
+      doneBefore: '2025, 5, 24',
       category: 'thing1',
       description: 'hello! I have some ideas as well..',
     },
@@ -37,14 +37,14 @@ let testingIIFE = (function () {
     {
       title: 'todoLaterToday',
       importance: 'high',
-      lastDayOfDeadline: '2025-5-24',
+      doneBefore: '2025-5-24',
       category: 'thing2',
       description: 'hello',
     },
     {
       title: 'todoTomorrow',
       importance: 'high',
-      lastDayOfDeadline: '2025-5-14',
+      doneBefore: '2025-5-14',
       category: 'thing2',
     },
   ];
@@ -75,7 +75,7 @@ let testingIIFE = (function () {
   console.log('--------------------------\nget all todos deadline today:');
   console.log(
     todoStorage.getTodosBySpecifications({
-      lastDayOfDeadline: dates.currentDate,
+      doneBefore: dates.currentDate,
     }),
   );
 
