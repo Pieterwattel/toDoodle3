@@ -23,7 +23,7 @@ class TodoStorage {
 
   orderArrayByDate(array) {
     array.sort((firstElement, secondElement) => {
-      return firstElement.deadline - secondElement.deadline;
+      return firstElement.doneBefore - secondElement.doneBefore;
     });
 
     for (let i = array.length; i > 0; i--) {
@@ -129,7 +129,7 @@ class TodoStorage {
       array = [...this.todoArray];
     }
 
-    const filteredArray = array.filter((item) => {
+    let filteredArray = array.filter((item) => {
       return Object.entries(obj).every(([key, value]) => {
         const itemValue = item[key];
 
@@ -142,6 +142,7 @@ class TodoStorage {
 
     // If you want to return a single object if exactly one match is found:
 
+    filteredArray = this.orderArrayByDate(filteredArray);
     return filteredArray;
   }
 }
