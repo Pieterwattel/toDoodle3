@@ -33,7 +33,9 @@ let domElements = {
     this.createInfoNode('title', todo.title);
 
     //description
-    this.createInfoNode('description', todo.description);
+    if (todo.description) {
+      this.createInfoNode('description', todo.description);
+    }
 
     //category
     this.createInfoNode('category', todo.category);
