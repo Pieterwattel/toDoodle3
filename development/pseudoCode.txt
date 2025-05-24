@@ -18,3 +18,30 @@ for topAmount of times,
 
 //then do the right column arrays
 
+for every index value, remove that value from the arrays
+
+
+first get each of the index values in a row
+
+make function disableActionButtonsExcept()
+
+make function changeUIState
+
+
+states:
+- empty
+create todo > creating todo
+
+- creating todo
+no buttons available
+(createTodo) empty with confirmation message
+(closeTodo) empty
+
+-todo Selected
+finish todo > -empty
+edit todo > -edit todo
+remove todo > -empty
+
+--make buttons for moving todo's up and down
+--add dates to known dates
+--make dates red when they passed

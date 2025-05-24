@@ -29,13 +29,15 @@ body {
 }
 
 .todoControls {
-  display: flex;
-  flex-direction: column;
   padding: calc(60px);
   padding-top: 20px;
   justify-content: space-between;
-  height: auto;
-  gap: 1.3vh;
+  margin-top: -10px;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2%;
 }
 
 .todoControls div {
@@ -116,12 +118,7 @@ body {
 }
 
 .todoControls {
-  margin-top: -10px;
   height: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2%;
 }
 
 .text {
@@ -272,7 +269,11 @@ button:not([disabled]):active {
 
 .label {
   margin-bottom: 0;
-  border: 0;
+  margin-top: 0;
+  padding: 5px;
+  font-weight: 700;
+
+  width: fit-content;
 }
 
 .topbar {
@@ -284,19 +285,19 @@ button:not([disabled]):active {
 }
 
 .text {
-  border: 1px solid black;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 0.2em;
-  margin-top: 0;
   overflow: auto;
-  width: fit-content;
-  padding: 5px;
   margin: 3px;
+
+  border-bottom: 1px solid grey;
 }
 
 .todoList {
   overflow: auto;
   height: 90%;
+}
+
+.todoControls {
+  overflow: auto;
 }
 
 /* #endregion */

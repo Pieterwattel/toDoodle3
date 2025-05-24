@@ -2,6 +2,7 @@ import { eventlisteners } from '../controller/eventListeners';
 import { domElements } from './domElements';
 import { dates } from '../model/dates';
 import { todoController } from '../controller/todoController';
+import { format } from 'date-fns';
 
 const display = {
   fillInBlock: function (block, array) {
@@ -89,6 +90,58 @@ const display = {
       this.fillInBlock(block4, block4Todos);
     }
     //if not, just divide the todo's between the 2 boxes
+  },
+
+  disableActionBtnsExcept: function (...theArgs) {
+    theArgs.forEach((btn) => {
+      if (
+        btn != createNewTodo ||
+        btn != finishTodo ||
+        btn != editTodo ||
+        btn != removeTodo
+      ) {
+        console.log(`btn "${btn}" is invalid!`);
+        return false;
+      }
+    });
+  },
+
+  showTodoDetails: function (todo) {
+    domElements.todoDisplay.textContent = '';
+    //title
+    this.createInfoNode('title', todo.title);
+
+    //description
+    if (todo.description) {
+      this.createInfoNode('description', todo.description);
+    }
+
+    //category
+    if (todo.category) {
+      this.createInfoNode('category', todo.category);
+    }
+
+    //deadline
+    if (todo.dateSpecifiedByUser) {
+      const date = format(todo.doneBefore, 'E d/M/yy');
+      this.createInfoNode('done before', date);
+    }
+  },
+
+  createInfoNode: function (label, content) {
+    const infoNodeDiv = domElements.makeDiv();
+    const labelDiv = domElements.makeDiv();
+    labelDiv.setAttribute('class', 'label');
+    const textDiv = domElements.makeDiv();
+    textDiv.setAttribute('class', 'text');
+
+    labelDiv.textContent = `- ` + label;
+    textDiv.textContent = content;
+
+    domElements.todoDisplay.appendChild(infoNodeDiv);
+
+    infoNodeDiv.appendChild(labelDiv);
+    infoNodeDiv.appendChild(textDiv);
   },
 };
 

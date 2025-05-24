@@ -140,4 +140,6 @@ aaaa\n`,
 
   console.log('--------------------------');
   display.updateTodoOverview(todoStorage.todoArray);
+
+  display.disableActionBtnsExcept('createTodo', 'editTodo');
 })();

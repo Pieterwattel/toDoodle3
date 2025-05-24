@@ -1,5 +1,6 @@
 import { domElements } from '../view/domElements';
 import { todoController } from './todoController';
+import { display } from '../view/display';
 
 class EventListeners {
   constructor() {
@@ -44,7 +45,7 @@ class EventListeners {
     node.setAttribute('title', 'click to edit, or for more info');
 
     node.addEventListener('click', () => {
-      domElements.showTodoDetails(element);
+      display.showTodoDetails(element);
     });
   }
 }

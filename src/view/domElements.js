@@ -15,6 +15,12 @@ let domElements = {
   todoCreationBtn: document.getElementById('todoCreationBtn'),
   todoDisplay: document.getElementById('todoDisplay'),
 
+  //action buttons
+  createNewTodoBtn: document.getElementById('createNewTodo'),
+  finishTodoBtn: document.getElementById('finishTodo'),
+  editTodoBtn: document.getElementById('editTodo'),
+  removeTodoBtn: document.getElementById('removeTodo'),
+
   block1: document.getElementById('importantUrgent'),
   block2: document.getElementById('notImportantUrgent'),
   block3: document.getElementById('importantNotUrgent'),
@@ -25,42 +31,6 @@ let domElements = {
 
   makeDiv: function () {
     return document.createElement('div');
-  },
-
-  showTodoDetails: function (todo) {
-    this.todoDisplay.textContent = '';
-    //title
-    this.createInfoNode('title', todo.title);
-
-    //description
-    if (todo.description) {
-      this.createInfoNode('description', todo.description);
-    }
-
-    //category
-    this.createInfoNode('category', todo.category);
-
-    //deadline
-    if (todo.dateSpecifiedByUser) {
-      const date = format(todo.doneBefore, 'E d/M/yy');
-      this.createInfoNode('done before', date);
-    }
-  },
-
-  createInfoNode: function (label, content) {
-    const infoNodeDiv = this.makeDiv();
-    const labelDiv = this.makeDiv();
-    labelDiv.setAttribute('class', 'label');
-    const textDiv = this.makeDiv();
-    textDiv.setAttribute('class', 'text');
-
-    labelDiv.textContent = `- ` + label;
-    textDiv.textContent = content;
-
-    this.todoDisplay.appendChild(infoNodeDiv);
-
-    infoNodeDiv.appendChild(labelDiv);
-    infoNodeDiv.appendChild(textDiv);
   },
 };
 
