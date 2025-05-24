@@ -23,43 +23,42 @@ let domElements = {
 
   todoDataPopup: document.createElement('div'),
 
-  getDiv: function () {
+  makeDiv: function () {
     return document.createElement('div');
   },
 
   showTodoDetails: function (todo) {
     this.todoDisplay.textContent = '';
     //title
-
-    const titleDiv = this.getDiv();
-    titleDiv.textContent = `
-    - title\n
-    ${todo.title}`;
-    this.todoDisplay.appendChild(titleDiv);
+    this.createInfoNode('title', todo.title);
 
     //description
-    const descriptionDiv = this.getDiv();
-    descriptionDiv.textContent = `
-    - description:\n
-    ${todo.description}`;
-    this.todoDisplay.appendChild(descriptionDiv);
+    this.createInfoNode('description', todo.description);
 
     //category
-    const categoryDiv = this.getDiv();
-    categoryDiv.textContent = `
-    - category:\n
-    ${todo.category}`;
-    this.todoDisplay.appendChild(categoryDiv);
+    this.createInfoNode('category', todo.category);
 
     //deadline
     if (todo.dateSpecifiedByUser) {
-      const doneBeforeDiv = this.getDiv();
       const date = format(todo.doneBefore, 'E d/M/yy');
-      doneBeforeDiv.textContent = `
-    - last day before deadline:\n
-    ${date}`;
-      this.todoDisplay.appendChild(doneBeforeDiv);
+      this.createInfoNode('done before', date);
     }
+  },
+
+  createInfoNode: function (label, content) {
+    const infoNodeDiv = this.makeDiv();
+    const labelDiv = this.makeDiv();
+    labelDiv.setAttribute('class', 'label');
+    const textDiv = this.makeDiv();
+    textDiv.setAttribute('class', 'text');
+
+    labelDiv.textContent = `- ` + label;
+    textDiv.textContent = content;
+
+    this.todoDisplay.appendChild(infoNodeDiv);
+
+    infoNodeDiv.appendChild(labelDiv);
+    infoNodeDiv.appendChild(textDiv);
   },
 };
 
