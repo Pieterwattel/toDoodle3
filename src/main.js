@@ -141,5 +141,5 @@ aaaa\n`,
   console.log('--------------------------');
   display.updateTodoOverview(todoStorage.todoArray);
 
-  display.disableActionBtnsExcept('createTodo', 'editTodo');
+  display.disableActionBtnsExcept('createNewTodoBtn', 'editTodoBtn');
 })();

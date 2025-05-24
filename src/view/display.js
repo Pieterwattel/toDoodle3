@@ -93,16 +93,28 @@ const display = {
   },
 
   disableActionBtnsExcept: function (...theArgs) {
+    domElements.createNewTodoBtn.setAttribute('disabled', 'true');
+    domElements.finishTodoBtn.setAttribute('disabled', 'true');
+    domElements.editTodoBtn.setAttribute('disabled', 'true');
+    domElements.removeTodoBtn.setAttribute('disabled', 'true');
+
     theArgs.forEach((btn) => {
       if (
-        btn != createNewTodo ||
-        btn != finishTodo ||
-        btn != editTodo ||
-        btn != removeTodo
+        btn != 'createNewTodoBtn' &&
+        btn != 'finishTodoBtn' &&
+        btn != 'editTodoBtn' &&
+        btn != 'removeTodoBtn'
       ) {
         console.log(`btn "${btn}" is invalid!`);
         return false;
       }
+
+      let currentBtnArr = Object.entries(domElements).find(
+        (item) => item[0] == btn,
+      );
+      let currentBtn = currentBtnArr[1];
+      console.log(currentBtn);
+      currentBtn.removeAttribute('disabled');
     });
   },
 
