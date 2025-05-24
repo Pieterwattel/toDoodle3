@@ -39,6 +39,14 @@ class EventListeners {
       todoController.createTodo(todoDataForBackend);
     });
   }
+
+  addTodoListListener(element, node) {
+    node.setAttribute('title', 'click to edit, or for more info');
+
+    node.addEventListener('click', () => {
+      domElements.showTodoDetails(element);
+    });
+  }
 }
 
 const eventlisteners = EventListeners.getSingleton();

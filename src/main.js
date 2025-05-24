@@ -4,13 +4,14 @@ import { todoStorage } from './model/todoStorage';
 import { eventlisteners } from './controller/eventListeners';
 import { frontendUtils } from './view/frontendUtils';
 import { dates } from './model/dates';
+import { display } from './view/display';
 
 let testingIIFE = (function () {
   const todoTestArray = [
     {
       title: 'todoNextYear',
-      importance: 'high',
-      doneBefore: '2025-5-24',
+      importance: 'low',
+      urgency: 3,
       category: 'thing1',
       description: 'these are some crazy plans.. I hope to see you soon',
     },
@@ -61,7 +62,7 @@ aaaa\n`,
     {
       title: 'todoInThePast',
       importance: 'high',
-      urgency: 1,
+      doneBefore: '2025-5-24',
       category: 'thing1',
       description: 'hello',
     },
@@ -138,5 +139,5 @@ aaaa\n`,
   console.log([...todoStorage.todoArray]);
 
   console.log('--------------------------');
-  todoController.updateTodoOverview(todoStorage.todoArray);
+  display.updateTodoOverview(todoStorage.todoArray);
 })();

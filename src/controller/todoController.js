@@ -59,33 +59,8 @@ class TodoController {
     return todoStorage.getTodosBySpecifications(dataObj);
   }
 
-  updateTodoOverview(array) {
-    let block1 = domElements.block1;
-    let block2 = domElements.block2;
-    let block3 = domElements.block3;
-    let block4 = domElements.block4;
-
-    const today = dates.currentDate;
-
-    const importantTodos = todoStorage.getTodosBySpecifications({
-      importance: 'high',
-    });
-
-    const importantToday = todoStorage.getTodosBySpecifications({
-      importance: 'high',
-      doneBefore: today,
-    });
-
-    if (
-      importantToday.length >=
-      importantTodos.length - importantToday.length
-    ) {
-      display.fillInBlock(block1, importantToday);
-
-      const importantOtherDays = todoStorage.todoArray.filter((element) => {
-        return dates.datesAreEqual(element.doneBefore, today);
-      });
-    }
+  getTodoArray() {
+    return todoStorage.todoArray;
   }
 }
 

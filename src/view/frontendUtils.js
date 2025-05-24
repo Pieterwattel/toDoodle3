@@ -42,8 +42,6 @@ const frontendUtils = {
     }
     return todoDataForBackend;
   },
-
-  majorityOfTodosIsToday: function () {},
 };
 
 export { frontendUtils };
