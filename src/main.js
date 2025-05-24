@@ -10,14 +10,16 @@ let testingIIFE = (function () {
     {
       title: 'todoNextYear',
       importance: 'high',
-      urgency: 3,
+      lastDayOfDeadline: '2025-5-24',
       category: 'thing1',
+      description: 'these are some crazy plans.. I hope to see you soon',
     },
     {
       title: 'todoToday',
-      importance: 'low',
-      lastDayOfDeadline: '2025, 5, 23',
+      importance: 'high',
+      lastDayOfDeadline: '2025, 5, 24',
       category: 'thing1',
+      description: 'hello! I have some ideas as well..',
     },
     {
       title: 'todoInThePast',
@@ -35,7 +37,7 @@ let testingIIFE = (function () {
     {
       title: 'todoLaterToday',
       importance: 'high',
-      lastDayOfDeadline: '2025-5-23',
+      lastDayOfDeadline: '2025-5-24',
       category: 'thing2',
       description: 'hello',
     },
@@ -67,6 +69,16 @@ let testingIIFE = (function () {
   console.log('--------------------------\nplace array:');
   console.log([...todoStorage.todoArray]);
 
+  /*
+  console.log('--------------------------\nget all important todos:');
+  console.log(todoStorage.getTodosBySpecifications({ importance: 'high' }));
+  console.log('--------------------------\nget all todos deadline today:');
+  console.log(
+    todoStorage.getTodosBySpecifications({
+      lastDayOfDeadline: dates.currentDate,
+    }),
+  );
+
   console.log(
     '--------------------------\nget all important todos with description "hello',
   );
@@ -76,6 +88,8 @@ let testingIIFE = (function () {
       description: 'hello',
     }),
   );
+  */
+
   console.log(
     '--------------------------\nmove todoTomorrow one place earlier',
   );

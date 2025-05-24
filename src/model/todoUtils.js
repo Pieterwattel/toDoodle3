@@ -1,4 +1,3 @@
-import { eachMinuteOfInterval } from 'date-fns';
 import { dates } from './dates';
 import { todoStorage } from './todoStorage';
 

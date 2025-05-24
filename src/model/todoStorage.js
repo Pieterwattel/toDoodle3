@@ -18,7 +18,7 @@ class TodoStorage {
 
   get todoArray() {
     const array = this.orderArrayByDate(this.#todoArray);
-    return array;
+    return [...array];
   }
 
   orderArrayByDate(array) {
@@ -143,14 +143,6 @@ class TodoStorage {
     // If you want to return a single object if exactly one match is found:
 
     return filteredArray;
-  }
-
-  getImportanceTodos(value) {
-    const dataReq = {
-      importance: value,
-    };
-    const todos = this.getTodosBySpecifications(dataReq);
-    return todos;
   }
 }
 

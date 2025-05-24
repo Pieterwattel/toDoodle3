@@ -8,14 +8,56 @@ let domElements = {
     categoryInput: document.getElementById('categoryInput'),
     descriptionInput: document.getElementById('descriptionInput'),
   },
+
   //
   todoCreationBtn: document.getElementById('todoCreationBtn'),
+  todoDisplay: document.getElementById('todoDisplay'),
 
   block1: document.getElementById('importantUrgent'),
   block2: document.getElementById('notImportantUrgent'),
   block3: document.getElementById('importantNotUrgent'),
   block4: document.getElementById('notImportantNotUrgent'),
   //
+
+  todoDataPopup: document.createElement('div'),
+
+  getDiv: function () {
+    return document.createElement('div');
+  },
+
+  showTodoDetails: function (todo) {
+    this.todoDisplay.textContent = '';
+    //title
+
+    const titleDiv = this.getDiv();
+    titleDiv.textContent = `
+    - title\n
+    ${todo.title}`;
+    this.todoDisplay.appendChild(titleDiv);
+
+    //description
+    const descriptionDiv = this.getDiv();
+    descriptionDiv.textContent = `
+    - description:\n
+    ${todo.description}`;
+    this.todoDisplay.appendChild(descriptionDiv);
+
+    //category
+    const categoryDiv = this.getDiv();
+    categoryDiv.textContent = `
+    - category:\n
+    ${todo.category}`;
+    this.todoDisplay.appendChild(categoryDiv);
+
+    //deadline
+    if (todo.dateSpecifiedByUser) {
+      const lastDayOfDeadlineDiv = this.getDiv();
+      lastDayOfDeadlineDiv.textContent = `
+    - lastDayOfDeadline:\n
+    ${todo.lastDayOfDeadline}`;
+      this.todoDisplay.appendChild(lastDayOfDeadlineDiv);
+    }
+  },
 };
 
 export { domElements };

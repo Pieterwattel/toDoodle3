@@ -5,6 +5,7 @@ import { frontendUtils } from '../view/frontendUtils';
 import { domElements } from '../view/domElements';
 import { dates } from '../model/dates.js';
 import { endOfDay } from 'date-fns';
+import { display } from '../view/display.js';
 
 class TodoController {
   constructor() {}
@@ -64,19 +65,27 @@ class TodoController {
     let block3 = domElements.block3;
     let block4 = domElements.block4;
 
-    const leftColumnArray = todoStorage.getImportanceTodos('low');
-    const rightColumnArray = todoStorage.getImportanceTodos('high');
+    const today = dates.currentDate;
 
-    //get all todo's that need to be done within a day:
-    const today = endOfDay(new Date());
-
-    console.log(today);
-
-    let todayArray = todoStorage.getTodosBySpecifications({
-      lastDayOfDeadline: today,
-      leftColumnArray,
+    const importantTodos = todoStorage.getTodosBySpecifications({
+      importance: 'high',
     });
-    console.log(todayArray);
+
+    const importantToday = todoStorage.getTodosBySpecifications({
+      importance: 'high',
+      lastDayOfDeadline: today,
+    });
+
+    if (
+      importantToday.length >=
+      importantTodos.length - importantToday.length
+    ) {
+      display.fillInBlock(block1, importantToday);
+
+      const importantOtherDays = todoStorage.todoArray.filter((element) => {
+        return dates.datesAreEqual(element.lastDayOfDeadline, today);
+      });
+    }
   }
 }
 

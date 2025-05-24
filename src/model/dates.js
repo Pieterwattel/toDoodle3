@@ -45,7 +45,6 @@ class Dates {
   }
 
   datesAreEqual(date1, date2) {
-    console.log(date1, date2);
     return date1.valueOf() == date2.valueOf();
   }
 }
