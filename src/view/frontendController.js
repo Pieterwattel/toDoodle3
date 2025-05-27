@@ -1,3 +1,5 @@
+import { display } from './display';
+
 class FrontendController {
   constructor() {
     this.currentUIState = 'empty';
@@ -11,7 +13,22 @@ class FrontendController {
     return this.instance;
   }
 
-  changeUIState(newState) {}
+  changeUIState(newState) {
+    switch (newState) {
+      case 'empty':
+        display.triggerStateEmpty();
+        break;
+      case 'createTodo':
+        display.triggerStateCreateTodo();
+        break;
+      case 'selectTodo':
+        display.triggerStateSelectTodo();
+        break;
+      case 'editTodo':
+        display.triggerStateEditTodo();
+        break;
+    }
+  }
 }
 
 const frontendController = FrontendController.getSingleton();

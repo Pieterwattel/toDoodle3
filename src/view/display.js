@@ -3,17 +3,9 @@ import { domElements } from './domElements';
 import { dates } from '../model/dates';
 import { todoController } from '../controller/todoController';
 import { format } from 'date-fns';
+import { renderLogic } from './renderLogic';
 
 const display = {
-  fillInBlock: function (block, array) {
-    array.forEach((element) => {
-      let div = document.createElement('div');
-      div.textContent = element.title;
-      eventlisteners.addTodoListListener(element, div);
-      block.prepend(div);
-    });
-  },
-
   updateTodoOverview(array) {
     let block1 = domElements.block1;
     let block2 = domElements.block2;
@@ -36,7 +28,7 @@ const display = {
       importantToday.length >=
       importantTodos.length - importantToday.length
     ) {
-      this.fillInBlock(block1, importantToday);
+      renderLogic.fillInBlock(block1, importantToday);
 
       const importantOtherDays = [];
       todoController.getTodoArray().forEach((element) => {
@@ -44,7 +36,7 @@ const display = {
           importantOtherDays.push(element);
       });
 
-      this.fillInBlock(block3, importantOtherDays);
+      renderLogic.fillInBlock(block3, importantOtherDays);
     } else {
       let block3Todos = [];
       let block3TodoAmount = Math.floor(importantTodos.length / 2);
@@ -52,8 +44,8 @@ const display = {
         block3Todos.unshift(importantTodos.pop());
       }
       let block1Todos = importantTodos;
-      this.fillInBlock(block1, block1Todos);
-      this.fillInBlock(block3, block3Todos);
+      renderLogic.fillInBlock(block1, block1Todos);
+      renderLogic.fillInBlock(block3, block3Todos);
     }
 
     const unimportantTodos = todoController.getTodosBySpecifications({
@@ -70,7 +62,7 @@ const display = {
       unimportantToday.length >=
       unimportantTodos.length - unimportantToday.length
     ) {
-      this.fillInBlock(block2, unimportantToday);
+      renderLogic.fillInBlock(block2, unimportantToday);
 
       const importantOtherDays = [];
       todoController.getTodoArray().forEach((element) => {
@@ -78,7 +70,7 @@ const display = {
           importantOtherDays.push(element);
       });
 
-      this.fillInBlock(block4, importantOtherDays);
+      renderLogic.fillInBlock(block4, importantOtherDays);
     } else {
       let block4Todos = [];
       let block4TodoAmount = Math.floor(unimportantTodos.length / 2);
@@ -86,8 +78,8 @@ const display = {
         block4Todos.unshift(unimportantTodos.pop());
       }
       let block2Todos = unimportantTodos;
-      this.fillInBlock(block2, block2Todos);
-      this.fillInBlock(block4, block4Todos);
+      renderLogic.fillInBlock(block2, block2Todos);
+      renderLogic.fillInBlock(block4, block4Todos);
     }
     //if not, just divide the todo's between the 2 boxes
   },
@@ -118,42 +110,25 @@ const display = {
     });
   },
 
-  showTodoDetails: function (todo) {
-    domElements.todoDisplay.textContent = '';
-    //title
-    this.createInfoNode('title', todo.title);
-
-    //description
-    if (todo.description) {
-      this.createInfoNode('description', todo.description);
-    }
-
-    //category
-    if (todo.category) {
-      this.createInfoNode('category', todo.category);
-    }
-
-    //deadline
-    if (todo.dateSpecifiedByUser) {
-      const date = format(todo.doneBefore, 'E d/M/yy');
-      this.createInfoNode('done before', date);
-    }
+  triggerStateEmpty: function () {
+    this.disableActionBtnsExcept('createTodoBtn');
   },
 
-  createInfoNode: function (label, content) {
-    const infoNodeDiv = domElements.makeDiv();
-    const labelDiv = domElements.makeDiv();
-    labelDiv.setAttribute('class', 'label');
-    const textDiv = domElements.makeDiv();
-    textDiv.setAttribute('class', 'text');
+  triggerStateCreateTodo: function () {
+    this.disableActionBtnsExcept();
+  },
 
-    labelDiv.textContent = `- ` + label;
-    textDiv.textContent = content;
+  triggerStateSelectTodo: function () {
+    this.disableActionBtnsExcept(
+      'createNewTodoBtn',
+      'finishTodoBtn',
+      'editTodoBtn',
+      'removeTodoBtn',
+    );
+  },
 
-    domElements.todoDisplay.appendChild(infoNodeDiv);
-
-    infoNodeDiv.appendChild(labelDiv);
-    infoNodeDiv.appendChild(textDiv);
+  triggerStateEditTodo: function () {
+    this.disableActionBtnsExcept();
   },
 };
 

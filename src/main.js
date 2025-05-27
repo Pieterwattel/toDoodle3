@@ -5,6 +5,7 @@ import { eventlisteners } from './controller/eventListeners';
 import { frontendUtils } from './view/frontendUtils';
 import { dates } from './model/dates';
 import { display } from './view/display';
+import { frontendController } from './view/frontendController';
 
 let testingIIFE = (function () {
   const todoTestArray = [
@@ -140,6 +141,5 @@ aaaa\n`,
 
   console.log('--------------------------');
   display.updateTodoOverview(todoStorage.todoArray);
-
-  display.disableActionBtnsExcept('createNewTodoBtn', 'editTodoBtn');
+  frontendController.changeUIState('selectTodo');
 })();

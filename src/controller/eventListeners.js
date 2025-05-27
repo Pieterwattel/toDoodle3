@@ -1,6 +1,8 @@
 import { domElements } from '../view/domElements';
 import { todoController } from './todoController';
 import { display } from '../view/display';
+import { frontendController } from '../view/frontendController';
+import { renderLogic } from '../view/renderLogic';
 
 class EventListeners {
   constructor() {
@@ -33,11 +35,18 @@ class EventListeners {
   };
 
   createEventListeners() {
+    //make the todo button click
     domElements.todoCreationBtn.addEventListener('click', (e) => {
       const newTodoData = this.DomData.getNewTodoData();
       const todoDataForBackend =
         todoController.formatFrontendTodoForBackend(newTodoData);
       todoController.createTodo(todoDataForBackend);
+
+      //useractions switch states buttons
+      console.log(domElements.createNewTodoBtn);
+      domElements.createNewTodoBtn.addEventListener('click', () => {
+        frontendController.changeUIState('createTodo');
+      });
     });
   }
 
@@ -45,7 +54,7 @@ class EventListeners {
     node.setAttribute('title', 'click to edit, or for more info');
 
     node.addEventListener('click', () => {
-      display.showTodoDetails(element);
+      renderLogic.showTodoDetails(element);
     });
   }
 }

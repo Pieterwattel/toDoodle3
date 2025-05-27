@@ -45,3 +45,27 @@ remove todo > -empty
 --make buttons for moving todo's up and down
 --add dates to known dates
 --make dates red when they passed
+
+
+---------------------------------------------
+renderLogic
+UI state management
+todoOverviewOrdering.js
+
+display.js functions:
+
+renderLogic:
+/fillInBlock> renderLogic
+updateTodoOverview > todoController
+                        >todoOverviewOrdering
+                            exports an ordered object with
+                                urgentImportant
+                                urgentNotImportant
+                                notUrgentImportant
+                                notUrgentNotImportant
+                        >UIStateManagement
+disableActionButtonsExcept > UIStates
+showTodoDetails > renderLogic
+createInfoNode > renderLogic
+
+remove trigger states
