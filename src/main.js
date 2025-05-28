@@ -4,8 +4,9 @@ import { todoStorage } from './model/todoStorage';
 import { eventlisteners } from './controller/eventListeners';
 import { frontendUtils } from './view/frontendUtils';
 import { dates } from './model/dates';
-import { display } from './view/display';
 import { frontendController } from './view/frontendController';
+import { renderLogic } from './view/renderLogic';
+import { domElements } from './view/domElements';
 
 let testingIIFE = (function () {
   const todoTestArray = [
@@ -19,46 +20,21 @@ let testingIIFE = (function () {
     {
       title: 'todoToday',
       importance: 'high',
-      doneBefore: '2025, 5, 24',
+      doneBefore: '2025, 5, 28',
       category: 'thing1',
-      description: `hello! I have some ideas as well..\n test description
- test description\n
- test description\n
-aa\n
- test description\n
- test description\n
- test descriptio\n
-aaaa\n
- test description\n
- test description\n
- test descriptionaaa\n'
-aaa\n
-aaaa\n
-hello! I have some ideas as well..\n test description
- test description\n
- test description\n
-aa\n
- test description\n
- test description\n
- test descriptio\n
-aaaa\n
- test description\n
- test description\n
- test descriptionaaa\n'
-aaa\n
-aaaa\nhello! I have some ideas as well..\n test description
- test description\n
- test description\n
-aa\n
- test description\n
- test description\n
- test descriptio\n
-aaaa\n
- test description\n
- test description\n
- test descriptionaaa\n'
-aaa\n
-aaaa\n`,
+      description: `hello! I have some ideas as well..\n test description`,
+    },
+    {
+      title: 'notChillTodo',
+      importance: 'low',
+      urgency: 1,
+      category: 'thing1',
+    },
+    {
+      title: 'today1',
+      importance: 'low',
+      doneBefore: '2025, 5, 28',
+      category: 'thing1',
     },
     {
       title: 'todoInThePast',
@@ -70,21 +46,45 @@ aaaa\n`,
     {
       title: 'veryChillTodo',
       importance: 'low',
+      urgency: 3,
+      category: 'thing1',
+    },
+    {
+      title: 'today2',
+      importance: 'low',
+      doneBefore: '2025, 5, 28',
+      category: 'thing1',
+    },
+    {
+      title: 'lessChillTodo',
+      importance: 'low',
       urgency: 2,
       category: 'thing1',
     },
     {
       title: 'todoLaterToday',
       importance: 'high',
-      doneBefore: '2025-5-24',
+      doneBefore: '2025-5-28',
       category: 'thing2',
       description: 'hello',
     },
     {
       title: 'todoTomorrow',
       importance: 'high',
-      doneBefore: '2025-5-14',
+      doneBefore: '2025-5-29',
       category: 'thing2',
+    },
+    {
+      title: 'today3',
+      importance: 'low',
+      doneBefore: '2025, 5, 28',
+      category: 'thing1',
+    },
+    {
+      title: 'today4',
+      importance: 'low',
+      doneBefore: '2025, 5, 28',
+      category: 'thing1',
     },
   ];
 
@@ -108,6 +108,31 @@ aaaa\n`,
   console.log('--------------------------\nplace array:');
   console.log([...todoStorage.todoArray]);
 
+  let todo = todoController.getTodosBySpecifications({ title: 'today3' })[0];
+  console.log(todo);
+  todoController.moveTodoInUrgency(todo, 'earlier');
+  console.log([...todoStorage.todoArray]);
+
+  console.log(
+    '--------------------------\norder the todos into the eiserhower matrix:',
+  );
+  let obj1 = frontendUtils.orderIntoEisenhowerMatrix(todoStorage.todoArray);
+  renderLogic.renderEisenhowerMatrix(obj1);
+
+  console.log(
+    '--------------------------\ndisable the userAction buttons, and re-enable some again:',
+  );
+  let disableArray = [
+    domElements.createNewTodoBtn,
+    domElements.finishTodoBtn,
+    domElements.editTodoBtn,
+    domElements.removeTodoBtn,
+  ];
+
+  let enableArray = [domElements.finishTodoBtn, domElements.removeTodoBtn];
+  renderLogic.disableDomElements(disableArray);
+  renderLogic.enableDomElements(enableArray);
+
   /*
   console.log('--------------------------\nget all important todos:');
   console.log(todoStorage.getTodosBySpecifications({ importance: 'high' }));
@@ -127,7 +152,6 @@ aaaa\n`,
       description: 'hello',
     }),
   );
-  */
 
   console.log(
     '--------------------------\nmove todoTomorrow one place earlier',
@@ -142,4 +166,5 @@ aaaa\n`,
   console.log('--------------------------');
   display.updateTodoOverview(todoStorage.todoArray);
   frontendController.changeUIState('selectTodo');
+  */
 })();

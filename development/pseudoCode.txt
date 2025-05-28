@@ -65,7 +65,13 @@ updateTodoOverview > todoController
                                 notUrgentNotImportant
                         >UIStateManagement
 disableActionButtonsExcept > UIStates
-showTodoDetails > renderLogic
-createInfoNode > renderLogic
+/showTodoDetails > renderLogic
+/createInfoNode > renderLogic
 
 remove trigger states
+
+give the action buttons as a parameter.
+change the function into: disable/enable htmlElements
+
+-empty display.js
+-fix move todo place function to work in the eisenhower matrix

@@ -1,6 +1,5 @@
 import { domElements } from '../view/domElements';
 import { todoController } from './todoController';
-import { display } from '../view/display';
 import { frontendController } from '../view/frontendController';
 import { renderLogic } from '../view/renderLogic';
 

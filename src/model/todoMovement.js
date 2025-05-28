@@ -5,6 +5,8 @@ const movement = {
   moveTodoInUrgency: function (todo, direction, array) {
     const nextTodo = this.getNextTodo(todo, direction, array);
 
+    console.log(nextTodo);
+
     if (!nextTodo) {
       return false;
     }

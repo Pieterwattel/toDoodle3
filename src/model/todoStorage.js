@@ -85,46 +85,6 @@ class TodoStorage {
    *@param {array} array optional
    */
   getTodosBySpecifications(obj, array) {
-    //I know now (thanks to chatGPT) that this function can be WAY smaller.
-    //however, I choose to keep this monolith a as testament to a grueling coding session.
-
-    /*
-    if (!array) {
-      array = [...this.todoArray];
-    }
-    let removalIndexes = [];
-
-    //this is a loop that runs one by one through the specificatied properties
-    for (let propertySpec in obj) {
-      const valueSpec = obj[propertySpec];
-
-      //collect all indexes of elements that need to be removed
-      array.forEach((element, index, array) => {
-        const elementValue = element[propertySpec];
-        if (
-          elementValue === undefined ||
-          elementValue.valueOf() != valueSpec.valueOf()
-        ) {
-          removalIndexes.push(index);
-        }
-      });
-    }
-
-    //get an ordered list of unique indexes for removal
-    const uniqueIndexes = todoUtil.removeDoublesFromArray(removalIndexes);
-    const orderedRemovalIndexes = uniqueIndexes.sort().reverse();
-
-    //remove indexes from array
-    let filteredArray = [...array];
-
-    console.log(orderedRemovalIndexes);
-    orderedRemovalIndexes.forEach((removalIndex) => {
-      filteredArray.splice(removalIndex, 1);
-    });
-
-    return filteredArray;
-    */
-
     if (!array) {
       array = [...this.todoArray];
     }
@@ -137,6 +97,28 @@ class TodoStorage {
           return itemValue.valueOf() === value.valueOf();
         }
         return itemValue === value;
+      });
+    });
+
+    // If you want to return a single object if exactly one match is found:
+
+    filteredArray = this.orderArrayByDate(filteredArray);
+    return filteredArray;
+  }
+
+  getTodosWithoutSpecifications(obj, array) {
+    if (!array) {
+      array = [...this.todoArray];
+    }
+
+    let filteredArray = array.filter((item) => {
+      return Object.entries(obj).every(([key, value]) => {
+        const itemValue = item[key];
+
+        if (value instanceof Date && itemValue instanceof Date) {
+          return itemValue.valueOf() != value.valueOf();
+        }
+        return itemValue != value;
       });
     });
 

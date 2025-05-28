@@ -2,10 +2,6 @@ import { TodoItem } from '../model/todoItem';
 import { todoStorage } from '../model/todoStorage';
 import { movement } from '../model/todoMovement';
 import { frontendUtils } from '../view/frontendUtils';
-import { domElements } from '../view/domElements';
-import { dates } from '../model/dates.js';
-import { endOfDay } from 'date-fns';
-import { display } from '../view/display.js';
 
 class TodoController {
   constructor() {}
@@ -55,8 +51,12 @@ class TodoController {
    * @param {date} doneBefore
    * @param {boolean} finished
    */
-  getTodosBySpecifications(dataObj) {
-    return todoStorage.getTodosBySpecifications(dataObj);
+  getTodosBySpecifications(dataObj, array) {
+    return todoStorage.getTodosBySpecifications(dataObj, array);
+  }
+
+  getTodosWithoutSpecifications(dataObj, array) {
+    return todoStorage.getTodosWithoutSpecifications(dataObj, array);
   }
 
   getTodoArray() {

@@ -1,6 +1,7 @@
 import { eventlisteners } from '../controller/eventListeners';
 import { domElements } from './domElements';
 import { format } from 'date-fns';
+import { frontendUtils } from './frontendUtils';
 
 const renderLogic = {
   fillInBlock: function (block, array) {
@@ -48,6 +49,58 @@ const renderLogic = {
 
     infoNodeDiv.appendChild(labelDiv);
     infoNodeDiv.appendChild(textDiv);
+  },
+
+  renderEisenhowerMatrix: function (obj) {
+    let block1 = domElements.block1;
+    let block2 = domElements.block2;
+    let block3 = domElements.block3;
+    let block4 = domElements.block4;
+
+    this.fillInBlock(block1, obj.block1_IU);
+    this.fillInBlock(block2, obj.block2_U);
+    this.fillInBlock(block3, obj.block3_I);
+    this.fillInBlock(block4, obj.block4_);
+  },
+
+  disableDomElements: function (array) {
+    if (Array.isArray(array) == false) {
+      console.log(
+        `ERROR, parameter should be an array! parameter is an ${typeof array}`,
+      );
+      return;
+    }
+
+    //disable the enableArray nodes
+    if (array != []) {
+      array.forEach((node) => {
+        if (frontendUtils.isHTMLElement(node)) {
+          node.setAttribute('disabled', 'true');
+        } else {
+          console.log('ERROR, ' + node + ' is not an html element');
+        }
+      });
+    }
+  },
+
+  enableDomElements: function (array) {
+    if (Array.isArray(array) == false) {
+      console.log(
+        `ERROR, parameter should be an array! parameter is an ${typeof array}`,
+      );
+      return;
+    }
+
+    //enable the enableArray nodes
+    if (array != []) {
+      array.forEach((node) => {
+        if (frontendUtils.isHTMLElement(node)) {
+          node.removeAttribute('disabled');
+        } else {
+          console.log('ERROR, ' + node + ' is not an html element');
+        }
+      });
+    }
   },
 };
 
