@@ -39,7 +39,7 @@ let testingIIFE = (function () {
     {
       title: 'todoInThePast',
       importance: 'high',
-      doneBefore: '2025-5-24',
+      doneBefore: '2025-6-1',
       category: 'thing1',
       description: 'hello',
     },
@@ -108,8 +108,16 @@ let testingIIFE = (function () {
   console.log('--------------------------\nplace array:');
   console.log([...todoStorage.todoArray]);
 
-  let todo = todoController.getTodosBySpecifications({ title: 'today3' })[0];
+  console.log('--------------------------\nget todoTomorrow');
+  const todoSpecifications1 = {
+    title: 'todoTomorrow',
+  };
+  let todo = todoController.getTodosBySpecifications(todoSpecifications1)[0];
   console.log(todo);
+
+  console.log([...todoStorage.todoArray]);
+
+  console.log('--------------------------\nmove todoTomorrow up earlier');
   todoController.moveTodoInUrgency(todo, 'earlier');
   console.log([...todoStorage.todoArray]);
 
@@ -133,7 +141,6 @@ let testingIIFE = (function () {
   renderLogic.disableDomElements(disableArray);
   renderLogic.enableDomElements(enableArray);
 
-  /*
   console.log('--------------------------\nget all important todos:');
   console.log(todoStorage.getTodosBySpecifications({ importance: 'high' }));
   console.log('--------------------------\nget all todos deadline today:');
@@ -152,19 +159,4 @@ let testingIIFE = (function () {
       description: 'hello',
     }),
   );
-
-  console.log(
-    '--------------------------\nmove todoTomorrow one place earlier',
-  );
-  const todoSpecifications1 = {
-    title: 'todoTomorrow',
-  };
-  let todo = todoController.getTodosBySpecifications(todoSpecifications1)[0];
-  todoController.moveTodoInUrgency(todo, 'earlier');
-  console.log([...todoStorage.todoArray]);
-
-  console.log('--------------------------');
-  display.updateTodoOverview(todoStorage.todoArray);
-  frontendController.changeUIState('selectTodo');
-  */
 })();

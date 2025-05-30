@@ -54,18 +54,10 @@ todoOverviewOrdering.js
 
 display.js functions:
 
-renderLogic:
-/fillInBlock> renderLogic
-updateTodoOverview > todoController
-                        >todoOverviewOrdering
-                            exports an ordered object with
-                                urgentImportant
-                                urgentNotImportant
-                                notUrgentImportant
-                                notUrgentNotImportant
-                        >UIStateManagement
-disableActionButtonsExcept > UIStates
-/showTodoDetails > renderLogic
+
+
+UIStates:
+ > 
 /createInfoNode > renderLogic
 
 remove trigger states
@@ -75,3 +67,59 @@ change the function into: disable/enable htmlElements
 
 -empty display.js
 -fix move todo place function to work in the eisenhower matrix
+
+
+todo: 
+maak een class van renderLogic
+
+
+what is the problem:
+when I change the order of priority of a todo in the eisenhower matrix, 
+it needs to adjust to the next todo in matrix, not in the total list (todoArray)
+
+but afterwards it needs to be placed to that new spot in the todoArray
+
+so I need to send the array made up of the block of the eisenhower matrix forward
+and make all functions receive that array, or supplant it with todoArray if no array was given
+then in the last function, which moves the todo in the array, I need to get the orginal array,
+and splice move the todo to the new index
+
+    -send an array of that eisenhower matrix block
+    - make a new function: getTodoArrayDependingOnUIState
+
+todoController.moveTodoInUrgency
+    -continue sending the array
+
+\/
+movement.moveTodoInUrgency
+    -if no array was given, make the array the todoArray
+\/
+getNextTodo
+    get the next todo of the given array (check with and without eisenhower array,
+                                          make sure that they give different todo's)
+
+todoStorage.SpliceTodoToNewIndex
+    give the current todo, and the placementIndexTodo,
+    get the index of the the placementIndexTodo
+    change this in the todoArray itself (directly)
+
+\/
+
+x make a frontEndUtil variable: currentTodoOverviewState
+x make a function: getTodoOrderDependingOnTodoOverviewState
+x connect the function to the todoController
+x make the array that is returned sent onto movement.moveTodoInUrgency
+- adjust getNextTodo to get the next todo in the given array
+- make sure that spliceTodoToNewIndex receives the 2 todo Objects:
+    movingTodo, todoAtMoveLocation
+- make sure that the splice happens in the todoArray itself
+
+problem: the todo is changed in position in the original todoArray, but is not changed
+in the returned array
+
+too seems to not change in the visual matrix
+
+functions for a state class:
+    applyClass 
+        change currentTodoOverviewState to class name
+        change display to overview state

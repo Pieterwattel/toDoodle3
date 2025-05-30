@@ -1,5 +1,6 @@
 import { todoController } from '../controller/todoController';
 import { dates } from '../model/dates';
+import { todoStorage } from '../model/todoStorage';
 
 const frontendUtils = {
   doTodoFormatting: function (dataObj) {
@@ -69,14 +70,12 @@ const frontendUtils = {
       importantToday.length >=
       importantTodos.length - importantToday.length
     ) {
-      console.log('if 1.1');
       block1_IU = importantToday;
       block3_I = todoController.getTodosWithoutSpecifications(
         { doneBefore: today },
         importantTodos,
       );
     } else {
-      console.log('if 1.2');
       let block3TodoAmount = Math.floor(importantTodos.length / 2);
       for (let i = block3TodoAmount - 1; i >= 0; i--) {
         block3_I.unshift(importantTodos.pop());
@@ -103,14 +102,12 @@ const frontendUtils = {
       unImportantToday.length >=
       unImportantTodos.length - unImportantToday.length
     ) {
-      console.log('if 2.1');
       block2_U = unImportantToday;
       block4_ = todoController.getTodosWithoutSpecifications(
         { doneBefore: today },
         unImportantTodos,
       );
     } else {
-      console.log('if 2.2');
       let block4TodoAmount = Math.floor(unImportantTodos.length / 2);
       for (let i = block4TodoAmount - 1; i >= 0; i--) {
         block4_.unshift(unImportantTodos.pop());
@@ -123,6 +120,44 @@ const frontendUtils = {
 
   isHTMLElement(element) {
     return element instanceof Node;
+  },
+
+  currentTodoOverviewState: 'eisenhowerMatrix',
+
+  getTodoOrderDependingOnOverviewState: function (todo) {
+    let array;
+    let orderedArray;
+
+    const overviewState = this.currentTodoOverviewState;
+
+    if (overviewState == 'eisenhowerMatrix') {
+      if (!todo) {
+        console.log('todo needs to be given when in eisenhower matrix state');
+      }
+
+      array = todoController.getTodoArray();
+      const importantTodos = todoController.getTodosBySpecifications({
+        importance: 'high',
+      });
+      const unImportantTodos = todoController.getTodosBySpecifications({
+        importance: 'low',
+      });
+
+      for (let entry of importantTodos) {
+        if (entry.id == todo.id) {
+          orderedArray = importantTodos;
+          break;
+        }
+      }
+      for (let entry of unImportantTodos) {
+        if (entry.id == todo.id) {
+          orderedArray = unImportantTodos;
+          break;
+        }
+      }
+    }
+
+    return orderedArray;
   },
 };
 

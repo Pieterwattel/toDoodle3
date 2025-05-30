@@ -36,8 +36,14 @@ class TodoController {
     todoStorage.addNewTodo(newTodo);
   }
 
-  moveTodoInUrgency(todo, direction) {
-    movement.moveTodoInUrgency(todo, direction, todoStorage.todoArray);
+  moveTodoInUrgency(todo, direction, array) {
+    if (Array.isArray(todo) || typeof todo != 'object') {
+      console.log(`ERROR: todo ${todo} is of wrong data type`);
+      return;
+    }
+
+    array = frontendUtils.getTodoOrderDependingOnOverviewState(todo);
+    movement.moveTodoInUrgency(todo, direction, array);
   }
 
   /**

@@ -62,10 +62,30 @@ class TodoStorage {
     this.#todoArray.push(newTodo);
   }
 
-  switchTodosInArray(todo, otherTodo, array) {
+  switchTodosInArray(todo, otherTodo) {
+    const array = this.todoArray;
     const temp = array[todo.index];
     array[todo.index] = array[otherTodo.index];
     array[otherTodo.index] = temp;
+  }
+
+  spliceTodoToNewIndex(todo, nextTodo) {
+    const array = this.#todoArray;
+
+    const currentIndex = array.indexOf(todo);
+    let newIndex = array.indexOf(nextTodo);
+    newIndex = currentIndex < newIndex ? newIndex - 1 : newIndex;
+
+    if (currentIndex === -1) {
+      console.log('ERROR todo not found');
+    }
+
+    // Remove the todo
+    array.splice(currentIndex, 1);
+    console.log(currentIndex);
+    console.log(newIndex);
+    // Insert todo at new position
+    array.splice(newIndex, 0, todo);
   }
 
   /**
