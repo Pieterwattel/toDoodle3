@@ -52,7 +52,7 @@ let testingIIFE = (function () {
     {
       title: 'today2',
       importance: 'low',
-      doneBefore: '2025, 5, 28',
+      doneBefore: '2025, 5, 29',
       category: 'thing1',
     },
     {
@@ -77,13 +77,13 @@ let testingIIFE = (function () {
     {
       title: 'today3',
       importance: 'low',
-      doneBefore: '2025, 5, 28',
+      doneBefore: '2025, 6, 1',
       category: 'thing1',
     },
     {
       title: 'today4',
       importance: 'low',
-      doneBefore: '2025, 5, 28',
+      doneBefore: '2025, 6, 2',
       category: 'thing1',
     },
   ];
@@ -119,12 +119,14 @@ let testingIIFE = (function () {
 
   console.log('--------------------------\nmove todoTomorrow up earlier');
   todoController.moveTodoInUrgency(todo, 'earlier');
+
   console.log([...todoStorage.todoArray]);
 
   console.log(
     '--------------------------\norder the todos into the eiserhower matrix:',
   );
   let obj1 = frontendUtils.orderIntoEisenhowerMatrix(todoStorage.todoArray);
+  console.log(obj1);
   renderLogic.renderEisenhowerMatrix(obj1);
 
   console.log(
@@ -140,23 +142,4 @@ let testingIIFE = (function () {
   let enableArray = [domElements.finishTodoBtn, domElements.removeTodoBtn];
   renderLogic.disableDomElements(disableArray);
   renderLogic.enableDomElements(enableArray);
-
-  console.log('--------------------------\nget all important todos:');
-  console.log(todoStorage.getTodosBySpecifications({ importance: 'high' }));
-  console.log('--------------------------\nget all todos deadline today:');
-  console.log(
-    todoStorage.getTodosBySpecifications({
-      doneBefore: dates.currentDate,
-    }),
-  );
-
-  console.log(
-    '--------------------------\nget all important todos with description "hello',
-  );
-  console.log(
-    todoStorage.getTodosBySpecifications({
-      importance: 'high',
-      description: 'hello',
-    }),
-  );
 })();

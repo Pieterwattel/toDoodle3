@@ -15,6 +15,8 @@ const movement = {
 
     todo.doneBefore = nextTodo.doneBefore;
 
+    console.log(nextTodo);
+
     todoStorage.spliceTodoToNewIndex(todo, nextTodo, array);
   },
 

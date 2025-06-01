@@ -9,7 +9,7 @@ const renderLogic = {
       let div = document.createElement('div');
       div.textContent = element.title;
       eventlisteners.addTodoListListener(element, div);
-      block.prepend(div);
+      block.appendChild(div);
     });
   },
 

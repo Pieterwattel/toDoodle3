@@ -43,6 +43,7 @@ class TodoController {
     }
 
     array = frontendUtils.getTodoOrderDependingOnOverviewState(todo);
+    console.log(array);
     movement.moveTodoInUrgency(todo, direction, array);
   }
 
