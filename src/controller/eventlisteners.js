@@ -3,11 +3,10 @@ import { todoController } from './todoController';
 import { frontendController } from '../view/frontendController';
 import { renderLogic } from '../view/renderLogic';
 import { UIStateManager } from '../view/UIStateManager';
+import { frontendUtils } from '../view/frontendUtils';
 
 class EventListeners {
-  constructor() {
-    this.createEventlisteners();
-  }
+  constructor() {}
 
   static instance;
 
@@ -34,9 +33,17 @@ class EventListeners {
     }
   };
 
-  createEventlisteners() {
+  initializeEventListeners() {
+    //useractions switch states buttons
+    domElements.createNewTodoBtn.addEventListener('click', () => {
+      UIStateManager.stateStorage.createTodoState.applyState();
+    });
+  }
+
+  updateEventlisteners() {
     //make the todo button click
-    if (domElements.todoCreationBtn) {
+    if (document.getElementById('todoCreationBtn')) {
+      domElements.todoCreationBtn = document.getElementById('todoCreationBtn');
       domElements.todoCreationBtn.addEventListener('click', (e) => {
         const newTodoData = this.DomData.getNewTodoData();
         const todoDataForBackend =
@@ -45,11 +52,22 @@ class EventListeners {
       });
     }
 
-    //useractions switch states buttons
-    console.log(domElements.createNewTodoBtn);
-    domElements.createNewTodoBtn.addEventListener('click', () => {
-      frontendController.changeUIState('createTodo');
-    });
+    if (document.getElementById('todoSaveEditBtn')) {
+      domElements.todoSaveEditBtn = document.getElementById('todoSaveEditBtn');
+      domElements.todoSaveEditBtn.addEventListener('click', (e) => {
+        const newTodoData = this.DomData.getNewTodoData();
+        const todoDataForBackend =
+          todoController.formatFrontendTodoForBackend(newTodoData);
+        todoController.createTodo(todoDataForBackend);
+      });
+    }
+
+    if (domElements.closeBtn) {
+      domElements.closeBtn.addEventListener('click', (e) => {
+        alert('yes');
+        UIStateManager.stateStorage.emptyState.applyState();
+      });
+    }
   }
 
   addTodoListListener(element, node) {
@@ -58,6 +76,8 @@ class EventListeners {
     node.addEventListener('click', () => {
       UIStateManager.stateStorage.todoSelectedState.applyState();
       renderLogic.showTodoDetails(element);
+      frontendUtils.todoBeingEdited = element;
+      console.log(frontendUtils.todoBeingEdited);
     });
   }
 }

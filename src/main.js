@@ -10,7 +10,9 @@ import { domElements } from './view/domElements';
 import { UIState } from './view/UIStates';
 import { UIStateManager } from './view/UIStateManager';
 
-let initializeApp = (function () {
+const initializeApp = (function () {
+  console.log(domElements.todoDisplay);
+  eventlisteners.initializeEventListeners();
   UIStateManager.initializeStates();
   UIStateManager.stateStorage.emptyState.applyState();
 })();

@@ -143,7 +143,7 @@ storeState = this.push(state)
 applystate:
 change buttons (createTodo)
 update todoDisplayContent (todoCreationMenu
-eventlisteners.createEventListeners)
+eventlfisteners.createEventListeners)
 
 
 - empty
@@ -159,4 +159,11 @@ finish todo > -empty
 edit todo > -edit todo
 remove todo > -empty
 
+make a variable: todoBeingEdited
 
+ editTodo:
+todoController.editTodo(){
+    let newTodo = TodoItem.create(dataObj);
+    let oldTodoIndex = todoStorage.indexOf(todoBeingEdited)
+    todoStorage.replaceTodo(newTodo, oldTodoIndex)
+}

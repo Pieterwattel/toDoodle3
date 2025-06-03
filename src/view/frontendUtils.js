@@ -159,6 +159,8 @@ const frontendUtils = {
 
     return orderedArray;
   },
+
+  todoBeingEdited: {},
 };
 
 export { frontendUtils };

@@ -8,21 +8,13 @@ class UIState {
     this.todoDisplayContent = dataObj.todoDisplayContent;
     this.availableButtons = dataObj.availableButtons;
     this.unavailableButtons = dataObj.unavailableButtons;
-  }
 
-  static stateStorage = {
-    createTodoState: new UIState({
-      name: 'createTodo',
-      todoDisplayContent: domElements.todoForm,
-      availableButtons: [],
-      unavailableButtons: [
-        domElements.createNewTodoBtn,
-        domElements.finishTodoBtn,
-        domElements.editTodoBtn,
-        domElements.removeTodoBtn,
-      ],
-    }),
-  };
+    this.triggerDisplayContent = function () {
+      if (typeof this.todoDisplayContent == 'function') {
+        this.todoDisplayContent();
+      }
+    };
+  }
 
   static createState(dataObj) {
     const newUIState = new UIState(dataObj);
@@ -39,9 +31,9 @@ class UIState {
     renderLogic.disableDomElements(unavailableButtons);
   }
 
-  updateTodoDisplayContent(content) {
-    domElements.todoDisplay.innerHTML = content;
-    eventlisteners.createEventlisteners();
+  updateTodoDisplayContent() {
+    console.log('yesyes');
+    this.triggerDisplayContent();
   }
 }
 

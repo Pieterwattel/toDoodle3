@@ -5,7 +5,7 @@ const UIStateManager = {
   initializeStates: function () {
     const createTodoStateData = {
       name: 'createTodo',
-      todoDisplayContent: domElements.todoForm,
+      todoDisplayContent: domElements.applyTodoForm.bind(domElements),
       availableButtons: [],
       unavailableButtons: [
         domElements.createNewTodoBtn,
@@ -34,14 +34,29 @@ const UIStateManager = {
       name: 'todoSelected',
       todoDisplayContent: '',
       availableButtons: [
+        domElements.createNewTodoBtn,
         domElements.finishTodoBtn,
         domElements.editTodoBtn,
         domElements.removeTodoBtn,
       ],
-      unavailableButtons: [domElements.createNewTodoBtn],
+      unavailableButtons: [],
     };
     let todoSelectedState = UIState.createState(todoSelectedStateData);
     UIStateManager.stateStorage.todoSelectedState = todoSelectedState;
+
+    const editTodoStateData = {
+      name: 'editTodo',
+      todoDisplayContent: '',
+      availableButtons: [],
+      unavailableButtons: [
+        domElements.createNewTodoBtn,
+        domElements.finishTodoBtn,
+        domElements.editTodoBtn,
+        domElements.removeTodoBtn,
+      ],
+    };
+    let editTodoState = UIState.createState(editTodoStateData);
+    UIStateManager.stateStorage.editTodoState = editTodoState;
   },
 
   stateStorage: {},

@@ -34,7 +34,9 @@ let domElements = {
     return document.createElement('div');
   },
 
-  todoForm: `<div> 
+  applyTodoForm: function () {
+    console.log(this.todoDisplay);
+    this.todoDisplay.innerHTML = `<div> 
       <label for="title">- title</label>
       <input type="text" name="title" id="titleInput" value="hmmm">
     </div>
@@ -70,7 +72,8 @@ let domElements = {
       <button id="todoCreationBtn">create todo</button>
       <button id="closeBtn">close&uArr;</button>
     </div>
-  `,
+  `;
+  },
 };
 
 export { domElements };
