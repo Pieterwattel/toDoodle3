@@ -1,4 +1,4 @@
-import { eventlisteners } from '../controller/eventListeners';
+import { eventlisteners } from '../controller/eventlisteners';
 import { domElements } from './domElements';
 import { format } from 'date-fns';
 import { frontendUtils } from './frontendUtils';

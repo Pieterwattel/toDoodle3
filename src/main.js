@@ -1,12 +1,19 @@
 import './styles.css';
 import { todoController } from './controller/todoController';
 import { todoStorage } from './model/todoStorage';
-import { eventlisteners } from './controller/eventListeners';
+import { eventlisteners } from './controller/eventlisteners';
 import { frontendUtils } from './view/frontendUtils';
 import { dates } from './model/dates';
 import { frontendController } from './view/frontendController';
 import { renderLogic } from './view/renderLogic';
 import { domElements } from './view/domElements';
+import { UIState } from './view/UIStates';
+import { UIStateManager } from './view/UIStateManager';
+
+let initializeApp = (function () {
+  UIStateManager.initializeStates();
+  UIStateManager.stateStorage.emptyState.applyState();
+})();
 
 let testingIIFE = (function () {
   const todoTestArray = [
@@ -91,11 +98,13 @@ let testingIIFE = (function () {
   console.log(dates.currentDate);
 
   console.log('--------------------------\nclick "createTodo":');
+  /*
   const newTodoData = eventlisteners.DomData.getNewTodoData();
   const todoDataForBackend =
     todoController.formatFrontendTodoForBackend(newTodoData);
   console.log(todoDataForBackend);
   todoController.createTodo(todoDataForBackend);
+  */
 
   console.log('--------------------------\ncreate todos:');
   let i = 0;
@@ -129,9 +138,11 @@ let testingIIFE = (function () {
   console.log(obj1);
   renderLogic.renderEisenhowerMatrix(obj1);
 
+  /*
   console.log(
     '--------------------------\ndisable the userAction buttons, and re-enable some again:',
   );
+
   let disableArray = [
     domElements.createNewTodoBtn,
     domElements.finishTodoBtn,
@@ -142,4 +153,6 @@ let testingIIFE = (function () {
   let enableArray = [domElements.finishTodoBtn, domElements.removeTodoBtn];
   renderLogic.disableDomElements(disableArray);
   renderLogic.enableDomElements(enableArray);
+
+  */
 })();

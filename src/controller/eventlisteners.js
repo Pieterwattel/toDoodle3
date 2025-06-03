@@ -2,10 +2,11 @@ import { domElements } from '../view/domElements';
 import { todoController } from './todoController';
 import { frontendController } from '../view/frontendController';
 import { renderLogic } from '../view/renderLogic';
+import { UIStateManager } from '../view/UIStateManager';
 
 class EventListeners {
   constructor() {
-    this.createEventListeners();
+    this.createEventlisteners();
   }
 
   static instance;
@@ -33,19 +34,21 @@ class EventListeners {
     }
   };
 
-  createEventListeners() {
+  createEventlisteners() {
     //make the todo button click
-    domElements.todoCreationBtn.addEventListener('click', (e) => {
-      const newTodoData = this.DomData.getNewTodoData();
-      const todoDataForBackend =
-        todoController.formatFrontendTodoForBackend(newTodoData);
-      todoController.createTodo(todoDataForBackend);
-
-      //useractions switch states buttons
-      console.log(domElements.createNewTodoBtn);
-      domElements.createNewTodoBtn.addEventListener('click', () => {
-        frontendController.changeUIState('createTodo');
+    if (domElements.todoCreationBtn) {
+      domElements.todoCreationBtn.addEventListener('click', (e) => {
+        const newTodoData = this.DomData.getNewTodoData();
+        const todoDataForBackend =
+          todoController.formatFrontendTodoForBackend(newTodoData);
+        todoController.createTodo(todoDataForBackend);
       });
+    }
+
+    //useractions switch states buttons
+    console.log(domElements.createNewTodoBtn);
+    domElements.createNewTodoBtn.addEventListener('click', () => {
+      frontendController.changeUIState('createTodo');
     });
   }
 
@@ -53,6 +56,7 @@ class EventListeners {
     node.setAttribute('title', 'click to edit, or for more info');
 
     node.addEventListener('click', () => {
+      UIStateManager.stateStorage.todoSelectedState.applyState();
       renderLogic.showTodoDetails(element);
     });
   }

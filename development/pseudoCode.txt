@@ -105,10 +105,10 @@ todoStorage.SpliceTodoToNewIndex
 
 \/
 
-x make a frontEndUtil variable: currentTodoOverviewState
-x make a function: getTodoOrderDependingOnTodoOverviewState
-x connect the function to the todoController
-x make the array that is returned sent onto movement.moveTodoInUrgency
+- make a frontEndUtil variable: currentTodoOverviewState
+- make a function: getTodoOrderDependingOnTodoOverviewState
+- connect the function to the todoController
+- make the array that is returned sent onto movement.moveTodoInUrgency
 - adjust getNextTodo to get the next todo in the given array
 - make sure that spliceTodoToNewIndex receives the 2 todo Objects:
     movingTodo, todoAtMoveLocation
@@ -123,3 +123,40 @@ functions for a state class:
     applyClass 
         change currentTodoOverviewState to class name
         change display to overview state
+
+there are 2 class contructors to be made:
+- todoOverviewState
+
+- userActionState
+
+
+class UIStates
+    contructor(name){
+        this.name = name
+        this.applyState = applyState
+    }
+
+    static userActionStateArray
+
+storeState = this.push(state)
+
+applystate:
+change buttons (createTodo)
+update todoDisplayContent (todoCreationMenu
+eventlisteners.createEventListeners)
+
+
+- empty
+create todo > creating todo
+
+- creating todo
+no buttons available
+(createTodo) empty with confirmation message
+(closeTodo) empty
+
+-todo Selected
+finish todo > -empty
+edit todo > -edit todo
+remove todo > -empty
+
+
