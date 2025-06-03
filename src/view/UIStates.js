@@ -8,12 +8,6 @@ class UIState {
     this.todoDisplayContent = dataObj.todoDisplayContent;
     this.availableButtons = dataObj.availableButtons;
     this.unavailableButtons = dataObj.unavailableButtons;
-
-    this.triggerDisplayContent = function () {
-      if (typeof this.todoDisplayContent == 'function') {
-        this.todoDisplayContent();
-      }
-    };
   }
 
   static createState(dataObj) {
@@ -32,8 +26,9 @@ class UIState {
   }
 
   updateTodoDisplayContent() {
-    console.log('yesyes');
-    this.triggerDisplayContent();
+    if (typeof this.todoDisplayContent == 'function') {
+      this.todoDisplayContent();
+    }
   }
 }
 

@@ -38,12 +38,11 @@ class TodoController {
 
   moveTodoInUrgency(todo, direction, array) {
     if (Array.isArray(todo) || typeof todo != 'object') {
-      console.log(`ERROR: todo ${todo} is of wrong data type`);
+      console.log(`ERROR: todo ${todo} is of wrong data type: ${typeof todo}`);
       return;
     }
 
     array = frontendUtils.getTodoOrderDependingOnOverviewState(todo);
-    console.log(array);
     movement.moveTodoInUrgency(todo, direction, array);
   }
 

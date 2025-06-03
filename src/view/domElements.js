@@ -1,15 +1,18 @@
 import { format } from 'date-fns';
 import { eventlisteners } from '../controller/eventlisteners';
+import { todoController } from '../controller/todoController';
 
 let domElements = {
-  todoCreationInputs: {
-    titleInput: document.getElementById('titleInput'),
-    importanceSelector: document.getElementById('importanceSelector'),
-    urgencySelector: document.getElementById('urgencySelector'),
-    urgencyDateInput: document.getElementById('urgencyDateInput'),
-    categorySelector: document.getElementById('categorySelector'),
-    categoryInput: document.getElementById('categoryInput'),
-    descriptionInput: document.getElementById('descriptionInput'),
+  todoCreationInputs: {},
+
+  todoCreationInputIds: {
+    titleInput: 'titleInput',
+    importanceSelector: 'importanceSelector',
+    urgencySelector: 'urgencySelector',
+    urgencyDateInput: 'urgencyDateInput',
+    categorySelector: 'categorySelector',
+    categoryInput: 'categoryInput',
+    descriptionInput: 'descriptionInput',
   },
 
   //
@@ -35,10 +38,9 @@ let domElements = {
   },
 
   applyTodoForm: function () {
-    console.log(this.todoDisplay);
     this.todoDisplay.innerHTML = `<div> 
       <label for="title">- title</label>
-      <input type="text" name="title" id="titleInput" value="hmmm">
+      <input type="text" name="title" id="titleInput" >
     </div>
     <div style="flex-direction: row; justify-content: space-between;">
       <label for="importance">- importance</label>
@@ -55,24 +57,40 @@ let domElements = {
         <option value="3">casual</option>
         <option value="4">&#8675;&#8675; give date &#8675;&#8675;</option>
       </select>
-      <input type="date" name="urgencyDate" id="urgencyDateInput" value="2005-05-22">
+      <input type="date" name="urgencyDate" id="urgencyDateInput" >
     </div>
     <div>
       <label for="category">- category</label>
       <select name="category" id="categorySelector">
         <option value="newCategory">&#8675;&#8675; new category &#8675;&#8675;</option>
       </select>
-      <input type="text" id="categoryInput" value="newCategoryName">
+      <input type="text" id="categoryInput">
     </div>
     <div>
       <label for="description">- description</label>
-      <textarea name="description" id="descriptionInput"> test description</textarea>
+      <textarea name="description" id="descriptionInput"></textarea>
     </div>
     <div id="bottomBtns">
       <button id="todoCreationBtn">create todo</button>
       <button id="closeBtn">close&uArr;</button>
     </div>
   `;
+    for (let key in this.todoCreationInputIds) {
+      let value = this.todoCreationInputIds[key];
+      let domElement = document.getElementById(value);
+      this.todoCreationInputs[key] = domElement;
+    }
+
+    console.log(this.todoCreationInputs);
+
+    let todoCreationBtn = document.getElementById('todoCreationBtn');
+    todoCreationBtn.addEventListener('click', () => {
+      const newTodoData = eventlisteners.DomData.getNewTodoData();
+      const todoDataForBackend =
+        todoController.formatFrontendTodoForBackend(newTodoData);
+      console.log(todoDataForBackend);
+      todoController.createTodo(todoDataForBackend);
+    });
   },
 };
 
