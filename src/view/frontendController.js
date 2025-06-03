@@ -1,3 +1,5 @@
+import { domElements } from './domElements';
+
 class FrontendController {
   constructor() {
     this.currentUIState = 'empty';
@@ -17,6 +19,13 @@ class FrontendController {
   }
 
   updateTodoOverview() {}
+
+  fillTodoCreationDisplay(state) {
+    console.log(state);
+    if (state == 'createTodo') {
+      domElements.todoDisplay.innerHTML = domElements.todoCreationForm;
+    }
+  }
 }
 
 const frontendController = FrontendController.getSingleton();

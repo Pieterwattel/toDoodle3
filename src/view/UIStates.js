@@ -1,6 +1,8 @@
 import { eventlisteners } from '../controller/eventlisteners';
 import { domElements } from './domElements';
 import { renderLogic } from './renderLogic';
+import { frontendController } from './frontendController';
+import { todoController } from '../controller/todoController';
 
 class UIState {
   constructor(dataObj) {
@@ -26,9 +28,7 @@ class UIState {
   }
 
   updateTodoDisplayContent() {
-    if (typeof this.todoDisplayContent == 'function') {
-      this.todoDisplayContent();
-    }
+    frontendController.fillTodoCreationDisplay(this.name);
   }
 }
 

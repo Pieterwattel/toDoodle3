@@ -37,10 +37,9 @@ let domElements = {
     return document.createElement('div');
   },
 
-  applyTodoForm: function () {
-    this.todoDisplay.innerHTML = `<div> 
+  todoCreationForm: `<div> 
       <label for="title">- title</label>
-      <input type="text" name="title" id="titleInput" >
+      <input id="titleInput" required type="text" name="title">
     </div>
     <div style="flex-direction: row; justify-content: space-between;">
       <label for="importance">- importance</label>
@@ -57,14 +56,14 @@ let domElements = {
         <option value="3">casual</option>
         <option value="4">&#8675;&#8675; give date &#8675;&#8675;</option>
       </select>
-      <input type="date" name="urgencyDate" id="urgencyDateInput" >
+      <input type="date" name="urgencyDate" id="urgencyDateInput" disabled="true">
     </div>
     <div>
       <label for="category">- category</label>
       <select name="category" id="categorySelector">
         <option value="newCategory">&#8675;&#8675; new category &#8675;&#8675;</option>
       </select>
-      <input type="text" id="categoryInput">
+      <input type="text" id="categoryInput" disabled="true">
     </div>
     <div>
       <label for="description">- description</label>
@@ -74,12 +73,33 @@ let domElements = {
       <button id="todoCreationBtn">create todo</button>
       <button id="closeBtn">close&uArr;</button>
     </div>
-  `;
+  `,
+  /*;
     for (let key in this.todoCreationInputIds) {
       let value = this.todoCreationInputIds[key];
       let domElement = document.getElementById(value);
       this.todoCreationInputs[key] = domElement;
     }
+
+    this.todoCreationInputs.urgencySelector.addEventListener('change', (e) => {
+      if (e.target.value == 4) {
+        this.todoCreationInputs.urgencyDateInput.removeAttribute('disabled');
+      } else {
+        this.todoCreationInputs.urgencyDateInput.setAttribute('disabled', true);
+      }
+    });
+
+    if (this.todoCreationInputs.categorySelector.value == 'newCategory') {
+      this.todoCreationInputs.categoryInput.removeAttribute('disabled');
+    }
+
+    this.todoCreationInputs.categorySelector.addEventListener('change', (e) => {
+      if (e.target.value == 'newCategory') {
+        this.todoCreationInputs.categoryInput.removeAttribute('disabled');
+      } else {
+        this.todoCreationInputs.categoryInput.setAttribute('disabled', true);
+      }
+    });
 
     console.log(this.todoCreationInputs);
 
@@ -90,8 +110,7 @@ let domElements = {
         todoController.formatFrontendTodoForBackend(newTodoData);
       console.log(todoDataForBackend);
       todoController.createTodo(todoDataForBackend);
-    });
-  },
+    });*/
 };
 
 export { domElements };

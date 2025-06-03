@@ -1,11 +1,12 @@
 import { UIState } from './UIStates';
 import { domElements } from './domElements';
+import { frontendController } from './frontendController';
 
 const UIStateManager = {
   initializeStates: function () {
     const createTodoStateData = {
       name: 'createTodo',
-      todoDisplayContent: domElements.applyTodoForm.bind(domElements),
+      todoDisplayContent: frontendController.makeTodoCreationDisplay,
       availableButtons: [],
       unavailableButtons: [
         domElements.createNewTodoBtn,
