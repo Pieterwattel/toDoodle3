@@ -1,6 +1,7 @@
 import { UIState } from './UIStates';
 import { domElements } from './domElements';
 import { frontendController } from './frontendController';
+import { overviewState } from './overviewStates';
 
 const UIStateManager = {
   initializeStates: function () {
@@ -63,4 +64,18 @@ const UIStateManager = {
   stateStorage: {},
 };
 
-export { UIStateManager };
+const overviewStateManager = {
+  initializeStates: function () {
+    const createTodoStateData = {
+      name: 'eisenhowerMatrix',
+      fillOverview: frontendController.applyEisenhowerMatrix,
+      todoRequirements: { returnCompleteArray: true },
+    };
+    let eisenhowerMatrix = overviewState.createState(createTodoStateData);
+    this.overviewStorage.eisenhowerMatrix = eisenhowerMatrix;
+  },
+
+  overviewStorage: {},
+};
+
+export { UIStateManager, overviewStateManager };

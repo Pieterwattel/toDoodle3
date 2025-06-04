@@ -19,7 +19,7 @@ class UIState {
 
   applyState() {
     this.enableDisableButtons(this.availableButtons, this.unavailableButtons);
-    this.updateTodoFormContent(this.todoFormContent);
+    this.applyStateUI(this.todoFormContent);
   }
 
   enableDisableButtons(availableButtons, unavailableButtons) {
@@ -27,8 +27,8 @@ class UIState {
     renderLogic.disableDomElements(unavailableButtons);
   }
 
-  updateTodoFormContent() {
-    frontendController.fillTodoCreationDisplay(this.name);
+  applyStateUI() {
+    frontendController.applyStateUI(this.name);
   }
 }
 

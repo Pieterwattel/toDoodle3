@@ -109,6 +109,10 @@ class TodoStorage {
       array = [...this.todoArray];
     }
 
+    if (obj.returnCompleteArray == true) {
+      return array;
+    }
+
     let filteredArray = array.filter((item) => {
       return Object.entries(obj).every(([key, value]) => {
         const itemValue = item[key];
@@ -146,6 +150,10 @@ class TodoStorage {
 
     filteredArray = this.orderArrayByDate(filteredArray);
     return filteredArray;
+  }
+
+  emptyTodoArray() {
+    this.#todoArray = [];
   }
 }
 

@@ -81,7 +81,7 @@ class EventListeners {
     });
   }
 
-  applyTodoFormListeners() {
+  applyTodoCreationFormListeners() {
     domElements.todoFormElements.urgencySelector.addEventListener(
       'change',
       (e) => {

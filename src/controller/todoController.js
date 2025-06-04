@@ -68,6 +68,10 @@ class TodoController {
   getTodoArray() {
     return todoStorage.todoArray;
   }
+
+  emptyTodoArray() {
+    todoStorage.emptyTodoArray();
+  }
 }
 
 const todoController = TodoController.getSingleton();
