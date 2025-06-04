@@ -1,3 +1,4 @@
+import { eventlisteners } from '../controller/eventlisteners';
 import { domElements } from './domElements';
 
 class FrontendController {
@@ -23,7 +24,9 @@ class FrontendController {
   fillTodoCreationDisplay(state) {
     console.log(state);
     if (state == 'createTodo') {
-      domElements.todoDisplay.innerHTML = domElements.todoCreationForm;
+      domElements.todoForm.innerHTML = domElements.todoCreationForm;
+      domElements.makeTodoFormNodes();
+      eventlisteners.applyTodoFormListeners();
     }
   }
 }

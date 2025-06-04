@@ -14,7 +14,7 @@ const renderLogic = {
   },
 
   showTodoDetails: function (todo) {
-    domElements.todoDisplay.textContent = '';
+    domElements.todoForm.textContent = '';
     //title
     this.createInfoNode('title', todo.title);
 
@@ -45,7 +45,7 @@ const renderLogic = {
     labelDiv.textContent = `- ` + label;
     textDiv.textContent = content;
 
-    domElements.todoDisplay.appendChild(infoNodeDiv);
+    domElements.todoForm.appendChild(infoNodeDiv);
 
     infoNodeDiv.appendChild(labelDiv);
     infoNodeDiv.appendChild(textDiv);

@@ -6,7 +6,7 @@ const UIStateManager = {
   initializeStates: function () {
     const createTodoStateData = {
       name: 'createTodo',
-      todoDisplayContent: frontendController.makeTodoCreationDisplay,
+      todoFormContent: frontendController.makeTodoCreationDisplay,
       availableButtons: [],
       unavailableButtons: [
         domElements.createNewTodoBtn,
@@ -20,7 +20,7 @@ const UIStateManager = {
 
     const emptyStateData = {
       name: 'empty',
-      todoDisplayContent: '',
+      todoFormContent: '',
       availableButtons: [domElements.createNewTodoBtn],
       unavailableButtons: [
         domElements.finishTodoBtn,
@@ -33,7 +33,7 @@ const UIStateManager = {
 
     const todoSelectedStateData = {
       name: 'todoSelected',
-      todoDisplayContent: '',
+      todoFormContent: '',
       availableButtons: [
         domElements.createNewTodoBtn,
         domElements.finishTodoBtn,
@@ -47,7 +47,7 @@ const UIStateManager = {
 
     const editTodoStateData = {
       name: 'editTodo',
-      todoDisplayContent: '',
+      todoFormContent: '',
       availableButtons: [],
       unavailableButtons: [
         domElements.createNewTodoBtn,

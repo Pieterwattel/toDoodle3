@@ -298,6 +298,7 @@ button:not([disabled]):active {
 
 .todoControls {
   overflow: auto;
+  background-color:;
 }
 
 /* #endregion */

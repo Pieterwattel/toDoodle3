@@ -7,7 +7,7 @@ import { todoController } from '../controller/todoController';
 class UIState {
   constructor(dataObj) {
     this.name = dataObj.name;
-    this.todoDisplayContent = dataObj.todoDisplayContent;
+    this.todoFormContent = dataObj.todoFormContent;
     this.availableButtons = dataObj.availableButtons;
     this.unavailableButtons = dataObj.unavailableButtons;
   }
@@ -19,7 +19,7 @@ class UIState {
 
   applyState() {
     this.enableDisableButtons(this.availableButtons, this.unavailableButtons);
-    this.updateTodoDisplayContent(this.todoDisplayContent);
+    this.updateTodoFormContent(this.todoFormContent);
   }
 
   enableDisableButtons(availableButtons, unavailableButtons) {
@@ -27,7 +27,7 @@ class UIState {
     renderLogic.disableDomElements(unavailableButtons);
   }
 
-  updateTodoDisplayContent() {
+  updateTodoFormContent() {
     frontendController.fillTodoCreationDisplay(this.name);
   }
 }

@@ -6,6 +6,6 @@ import { runQuietTests } from './tests';
 const initializeApp = (function () {
   eventlisteners.initializeEventListeners();
   UIStateManager.initializeStates();
-  UIStateManager.stateStorage.emptyState.applyState();
+  UIStateManager.stateStorage.createTodoState.applyState();
   runQuietTests({ verbose: false });
 })();

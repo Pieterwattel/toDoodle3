@@ -80,6 +80,55 @@ class EventListeners {
       console.log(frontendUtils.todoBeingEdited);
     });
   }
+
+  applyTodoFormListeners() {
+    domElements.todoCreationInputs.urgencySelector.addEventListener(
+      'change',
+      (e) => {
+        if (e.target.value == 4) {
+          domElements.todoCreationInputs.urgencyDateInput.removeAttribute(
+            'disabled',
+          );
+        } else {
+          domElements.todoCreationInputs.urgencyDateInput.setAttribute(
+            'disabled',
+            true,
+          );
+        }
+      },
+    );
+
+    if (
+      domElements.todoCreationInputs.categorySelector.value == 'newCategory'
+    ) {
+      domElements.todoCreationInputs.categoryInput.removeAttribute('disabled');
+    }
+
+    domElements.todoCreationInputs.categorySelector.addEventListener(
+      'change',
+      (e) => {
+        if (e.target.value == 'newCategory') {
+          domElements.todoCreationInputs.categoryInput.removeAttribute(
+            'disabled',
+          );
+        } else {
+          domElements.todoCreationInputs.categoryInput.setAttribute(
+            'disabled',
+            true,
+          );
+        }
+      },
+    );
+
+    domElements.todoForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const newTodoData = eventlisteners.DomData.getNewTodoData();
+      const todoDataForBackend =
+        todoController.formatFrontendTodoForBackend(newTodoData);
+      console.log(todoDataForBackend);
+      todoController.createTodo(todoDataForBackend);
+    });
+  }
 }
 
 const eventlisteners = EventListeners.getSingleton();

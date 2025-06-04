@@ -17,7 +17,7 @@ let domElements = {
 
   //
   todoCreationBtn: document.getElementById('todoCreationBtn'),
-  todoDisplay: document.getElementById('todoDisplay'),
+  todoForm: document.getElementById('todoForm'),
 
   //action buttons
   createNewTodoBtn: document.getElementById('createNewTodo'),
@@ -70,47 +70,20 @@ let domElements = {
       <textarea name="description" id="descriptionInput"></textarea>
     </div>
     <div id="bottomBtns">
-      <button id="todoCreationBtn">create todo</button>
+      <button id="todoCreationBtn" type-"submit">create todo</button>
       <button id="closeBtn">close&uArr;</button>
     </div>
   `,
-  /*;
+
+  makeTodoFormNodes: function () {
     for (let key in this.todoCreationInputIds) {
       let value = this.todoCreationInputIds[key];
       let domElement = document.getElementById(value);
       this.todoCreationInputs[key] = domElement;
     }
 
-    this.todoCreationInputs.urgencySelector.addEventListener('change', (e) => {
-      if (e.target.value == 4) {
-        this.todoCreationInputs.urgencyDateInput.removeAttribute('disabled');
-      } else {
-        this.todoCreationInputs.urgencyDateInput.setAttribute('disabled', true);
-      }
-    });
-
-    if (this.todoCreationInputs.categorySelector.value == 'newCategory') {
-      this.todoCreationInputs.categoryInput.removeAttribute('disabled');
-    }
-
-    this.todoCreationInputs.categorySelector.addEventListener('change', (e) => {
-      if (e.target.value == 'newCategory') {
-        this.todoCreationInputs.categoryInput.removeAttribute('disabled');
-      } else {
-        this.todoCreationInputs.categoryInput.setAttribute('disabled', true);
-      }
-    });
-
-    console.log(this.todoCreationInputs);
-
-    let todoCreationBtn = document.getElementById('todoCreationBtn');
-    todoCreationBtn.addEventListener('click', () => {
-      const newTodoData = eventlisteners.DomData.getNewTodoData();
-      const todoDataForBackend =
-        todoController.formatFrontendTodoForBackend(newTodoData);
-      console.log(todoDataForBackend);
-      todoController.createTodo(todoDataForBackend);
-    });*/
+    this.todoCreationBtn = document.getElementById('todoCreationBtn');
+  },
 };
 
 export { domElements };
