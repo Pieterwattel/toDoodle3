@@ -2,8 +2,9 @@ import { domElements } from '../view/domElements';
 import { todoController } from './todoController';
 import { frontendController } from '../view/frontendController';
 import { renderLogic } from '../view/renderLogic';
-import { UIStateManager } from '../view/UIStateManager';
+import { overviewStateManager, UIStateManager } from '../view/UIStateManager';
 import { frontendUtils } from '../view/frontendUtils';
+import { overviewState } from '../view/overviewStates';
 
 class EventListeners {
   constructor() {}
@@ -127,6 +128,9 @@ class EventListeners {
       todoController.createTodo(todoDataForBackend);
       renderLogic.placeEmptyTodoForm();
       UIStateManager.stateStorage.createTodoState.applyState();
+
+      const currentOverview = overviewState.currentOverviewState;
+      overviewStateManager.overviewStorage[currentOverview].applyOverview();
     });
 
     domElements.closeBtn.addEventListener('click', (e) => {

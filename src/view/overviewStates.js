@@ -12,7 +12,8 @@ class overviewState {
     return newUIState;
   }
 
-  applyOverview(content) {
+  applyOverview() {
+    overviewState.currentOverviewState = this.name;
     let array = todoController.getTodosBySpecifications(this.todoRequirements);
     this.fillOverview(array);
   }

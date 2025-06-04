@@ -5,6 +5,7 @@ import { frontendUtils } from './frontendUtils';
 
 const renderLogic = {
   fillInBlock: function (block, array) {
+    block.innerHTML = '';
     array.forEach((element) => {
       let div = document.createElement('div');
       div.textContent = element.title;
