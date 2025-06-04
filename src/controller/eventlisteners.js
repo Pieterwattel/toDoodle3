@@ -21,7 +21,7 @@ class EventListeners {
 
     static getNewTodoData() {
       const todoInputObj = {};
-      const inputElements = domElements.todoCreationInputs;
+      const inputElements = domElements.todoFormElements;
       for (const element in inputElements) {
         const domNode = inputElements[element];
         const key = domNode.id;
@@ -82,15 +82,15 @@ class EventListeners {
   }
 
   applyTodoFormListeners() {
-    domElements.todoCreationInputs.urgencySelector.addEventListener(
+    domElements.todoFormElements.urgencySelector.addEventListener(
       'change',
       (e) => {
         if (e.target.value == 4) {
-          domElements.todoCreationInputs.urgencyDateInput.removeAttribute(
+          domElements.todoFormElements.urgencyDateInput.removeAttribute(
             'disabled',
           );
         } else {
-          domElements.todoCreationInputs.urgencyDateInput.setAttribute(
+          domElements.todoFormElements.urgencyDateInput.setAttribute(
             'disabled',
             true,
           );
@@ -98,21 +98,19 @@ class EventListeners {
       },
     );
 
-    if (
-      domElements.todoCreationInputs.categorySelector.value == 'newCategory'
-    ) {
-      domElements.todoCreationInputs.categoryInput.removeAttribute('disabled');
+    if (domElements.todoFormElements.categorySelector.value == 'newCategory') {
+      domElements.todoFormElements.categoryInput.removeAttribute('disabled');
     }
 
-    domElements.todoCreationInputs.categorySelector.addEventListener(
+    domElements.todoFormElements.categorySelector.addEventListener(
       'change',
       (e) => {
         if (e.target.value == 'newCategory') {
-          domElements.todoCreationInputs.categoryInput.removeAttribute(
+          domElements.todoFormElements.categoryInput.removeAttribute(
             'disabled',
           );
         } else {
-          domElements.todoCreationInputs.categoryInput.setAttribute(
+          domElements.todoFormElements.categoryInput.setAttribute(
             'disabled',
             true,
           );
@@ -127,6 +125,12 @@ class EventListeners {
         todoController.formatFrontendTodoForBackend(newTodoData);
       console.log(todoDataForBackend);
       todoController.createTodo(todoDataForBackend);
+      renderLogic.placeEmptyTodoForm();
+      UIStateManager.stateStorage.createTodoState.applyState();
+    });
+
+    domElements.closeBtn.addEventListener('click', (e) => {
+      UIStateManager.stateStorage.emptyState.applyState();
     });
   }
 }

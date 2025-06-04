@@ -102,6 +102,10 @@ const renderLogic = {
       });
     }
   },
+
+  placeEmptyTodoForm: function () {
+    domElements.todoForm.innerHTML = domElements.todoCreationForm;
+  },
 };
 
 export { renderLogic };

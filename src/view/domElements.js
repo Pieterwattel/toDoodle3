@@ -3,9 +3,9 @@ import { eventlisteners } from '../controller/eventlisteners';
 import { todoController } from '../controller/todoController';
 
 let domElements = {
-  todoCreationInputs: {},
+  todoFormElements: {},
 
-  todoCreationInputIds: {
+  todoFormIds: {
     titleInput: 'titleInput',
     importanceSelector: 'importanceSelector',
     urgencySelector: 'urgencySelector',
@@ -16,7 +16,6 @@ let domElements = {
   },
 
   //
-  todoCreationBtn: document.getElementById('todoCreationBtn'),
   todoForm: document.getElementById('todoForm'),
 
   //action buttons
@@ -70,19 +69,20 @@ let domElements = {
       <textarea name="description" id="descriptionInput"></textarea>
     </div>
     <div id="bottomBtns">
-      <button id="todoCreationBtn" type-"submit">create todo</button>
-      <button id="closeBtn">close&uArr;</button>
+      <button id="todoCreationBtn" type="submit">create todo</button>
+      <button id="closeBtn" type="button">close&uArr;</button>
     </div>
   `,
 
   makeTodoFormNodes: function () {
-    for (let key in this.todoCreationInputIds) {
-      let value = this.todoCreationInputIds[key];
+    for (let key in this.todoFormIds) {
+      let value = this.todoFormIds[key];
       let domElement = document.getElementById(value);
-      this.todoCreationInputs[key] = domElement;
+      this.todoFormElements[key] = domElement;
     }
 
     this.todoCreationBtn = document.getElementById('todoCreationBtn');
+    this.closeBtn = document.getElementById('closeBtn');
   },
 };
 

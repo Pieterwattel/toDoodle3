@@ -1,5 +1,6 @@
 import { eventlisteners } from '../controller/eventlisteners';
 import { domElements } from './domElements';
+import { renderLogic } from './renderLogic';
 
 class FrontendController {
   constructor() {
@@ -24,9 +25,11 @@ class FrontendController {
   fillTodoCreationDisplay(state) {
     console.log(state);
     if (state == 'createTodo') {
-      domElements.todoForm.innerHTML = domElements.todoCreationForm;
+      renderLogic.placeEmptyTodoForm();
       domElements.makeTodoFormNodes();
       eventlisteners.applyTodoFormListeners();
+    } else if (state == 'empty') {
+      domElements.todoForm.innerHTML = '';
     }
   }
 }
