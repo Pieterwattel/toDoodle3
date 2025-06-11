@@ -1,6 +1,7 @@
 import { todoController } from '../controller/todoController';
 import { dates } from '../model/dates';
 import { todoStorage } from '../model/todoStorage';
+import { format } from 'date-fns';
 
 const frontendUtils = {
   doTodoFormatting: function (dataObj) {
@@ -44,8 +45,6 @@ const frontendUtils = {
   },
 
   orderIntoEisenhowerMatrix(array) {
-    console.trace();
-    console.log(array);
     let block1_IU = [];
     let block2_U = [];
     let block3_I = [];
@@ -164,6 +163,15 @@ const frontendUtils = {
   },
 
   todoBeingEdited: {},
+
+  getDateForUser: function (element) {
+    let fnsDate = element.doneBefore;
+    let userFormatDate = '';
+
+    userFormatDate = format(fnsDate, 'iiiiii dd MMM yy');
+
+    return userFormatDate;
+  },
 };
 
 export { frontendUtils };

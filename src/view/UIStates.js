@@ -18,6 +18,7 @@ class UIState {
   }
 
   applyState() {
+    console.trace();
     this.enableDisableButtons(this.availableButtons, this.unavailableButtons);
     this.applyStateUI(this.todoFormContent);
   }

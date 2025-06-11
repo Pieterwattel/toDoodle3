@@ -42,17 +42,6 @@ class EventListeners {
   }
 
   updateEventlisteners() {
-    //make the todo button click
-    if (document.getElementById('todoCreationBtn')) {
-      domElements.todoCreationBtn = document.getElementById('todoCreationBtn');
-      domElements.todoCreationBtn.addEventListener('click', (e) => {
-        const newTodoData = this.DomData.getNewTodoData();
-        const todoDataForBackend =
-          todoController.formatFrontendTodoForBackend(newTodoData);
-        todoController.createTodo(todoDataForBackend);
-      });
-    }
-
     if (document.getElementById('todoSaveEditBtn')) {
       domElements.todoSaveEditBtn = document.getElementById('todoSaveEditBtn');
       domElements.todoSaveEditBtn.addEventListener('click', (e) => {
@@ -119,12 +108,12 @@ class EventListeners {
       },
     );
 
+    console.log(domElements.todoForm.dataset);
     domElements.todoForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const newTodoData = eventlisteners.DomData.getNewTodoData();
       const todoDataForBackend =
         todoController.formatFrontendTodoForBackend(newTodoData);
-      console.log(todoDataForBackend);
       todoController.createTodo(todoDataForBackend);
       renderLogic.placeEmptyTodoForm();
       UIStateManager.stateStorage.createTodoState.applyState();

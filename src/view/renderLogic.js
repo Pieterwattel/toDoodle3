@@ -7,10 +7,25 @@ const renderLogic = {
   fillInBlock: function (block, array) {
     block.innerHTML = '';
     array.forEach((element) => {
-      let div = document.createElement('div');
-      div.textContent = element.title;
-      eventlisteners.addTodoListListener(element, div);
-      block.appendChild(div);
+      const itemDiv = document.createElement('div');
+      const changeOrderDiv = document.createElement('div');
+      const titleDiv = document.createElement('div');
+      const dateDiv = document.createElement('div');
+
+      itemDiv.setAttribute('class', 'matrixItem');
+
+      changeOrderDiv.textContent = 'ʌ/v';
+      titleDiv.textContent = element.title;
+      dateDiv.textContent = element.dateSpecifiedByUser
+        ? frontendUtils.getDateForUser(element)
+        : '';
+
+      eventlisteners.addTodoListListener(element, itemDiv);
+      block.appendChild(itemDiv);
+      itemDiv.appendChild(changeOrderDiv);
+
+      itemDiv.appendChild(titleDiv);
+      itemDiv.appendChild(dateDiv);
     });
   },
 

@@ -32,6 +32,8 @@ class TodoController {
    * @param {date} doneBefore - date
    */
   createTodo(dataObj) {
+    console.log(`name is: ${dataObj.title}`);
+
     let newTodo = TodoItem.create(dataObj);
     todoStorage.addNewTodo(newTodo);
   }
