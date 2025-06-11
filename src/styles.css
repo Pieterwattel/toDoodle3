@@ -5,6 +5,11 @@ body {
   background-size: auto 100%;
 }
 
+@font-face {
+  font-family: 'courierNarrow';
+  src: url('./otherFiles/couriernarrow6x12.otf'));
+}
+
 /* -content placement- */
 /* #region */
 #mainContent {
@@ -227,7 +232,7 @@ body {
 /* -specific formatting- */
 /* #region */
 * {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'courierNarrow'
 }
 
 .todoControls button {
@@ -311,6 +316,7 @@ button:not([disabled]):active {
 .todoList {
   overflow: auto;
   height: 90%;
+  padding-right: 2%;
 }
 
 .todoControls {
@@ -319,18 +325,34 @@ button:not([disabled]):active {
 }
 
 .changeOrderFrame {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 1em;
+  margin-right: 2%;
+}
+
+.todoItemLeftContainer{
+  width: 100%;
 }
 
 .orderBtn {
-  border: 0px solid black;
   height: 1em;
   width: 1em;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
-  border-radius: 0.3em;
-  margin-right: 0.2em;
+  border:0;
+  border-radius: 1em;
+}
+
+.titleDiv{
+  width: 100%;
+}
+
+.dateDiv{
+  width: 100%;
+  word-wrap: initial;
+  text-align: end;
 }
 
 /* #endregion */

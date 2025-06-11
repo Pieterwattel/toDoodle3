@@ -28,14 +28,14 @@ const renderLogic = {
       const moveUpBtn = this.createAppendNode({
         type: 'button',
         class: ['orderBtn', 'upBtn'],
-        parent: todoItemLeftContainer,
+        parent: changeOrderFrame,
         textContent: `\u21E7`,
       });
 
       const moveDownBtn = this.createAppendNode({
         type: 'button',
         class: ['orderBtn', 'upBtn'],
-        parent: todoItemLeftContainer,
+        parent: changeOrderFrame,
         textContent: '\u21E9',
       });
 
@@ -49,7 +49,9 @@ const renderLogic = {
         type: 'div',
         class: 'dateDiv',
         parent: itemDiv,
-        textContent: frontendUtils.formatDateForUser(element.doneBefore),
+        textContent: element.dateSpecifiedByUser
+          ? frontendUtils.formatDateForUser(element.doneBefore)
+          : null,
       });
 
       eventlisteners.addTodoListListener(element, titleDiv);
