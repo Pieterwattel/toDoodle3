@@ -44,6 +44,8 @@ const frontendUtils = {
   },
 
   orderIntoEisenhowerMatrix(array) {
+    console.trace();
+    console.log(array);
     let block1_IU = [];
     let block2_U = [];
     let block3_I = [];
@@ -78,7 +80,8 @@ const frontendUtils = {
     } else {
       let block3TodoAmount = Math.floor(importantTodos.length / 2);
       for (let i = block3TodoAmount - 1; i >= 0; i--) {
-        block3_I.unshift(importantTodos.pop());
+        let todo = importantTodos.pop();
+        block3_I.unshift(todo);
       }
       block1_IU = importantTodos;
     }

@@ -33,7 +33,7 @@ body {
   padding-top: 20px;
   justify-content: space-between;
   margin-top: -10px;
-  height: 90%;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -83,4 +83,6 @@ export function runQuietTests({ verbose = false } = {}) {
   } else {
     logIfVerbose('All tests passed quietly.');
   }
+
+  todoStorage.emptyTodoArray();
 }

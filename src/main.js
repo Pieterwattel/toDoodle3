@@ -29,11 +29,15 @@ const todoTestArray = [
   // add your other todos here...
 ];
 
+
+
+runQuietTests({ verbose: false });
+  
+
 todoTestArray.forEach((todo) => todoController.createTodo(todo));
 
 const initializeApp = (function () {
-  runQuietTests({ verbose: false }), eventlisteners.initializeEventListeners();
-
+  eventlisteners.initializeEventListeners();
   UIStateManager.initializeStates();
   UIStateManager.stateStorage.createTodoState.applyState();
 
