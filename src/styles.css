@@ -62,6 +62,19 @@ body {
   gap: 10px;
 }
 
+.matrixItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todoItemLeftContainer {
+  display: flex;
+}
+
+.dateDiv {
+  font-weight: bold;
+}
+
 /* #endregion*/
 
 /* -sizing-*/
@@ -213,6 +226,10 @@ body {
 
 /* -specific formatting- */
 /* #region */
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
 .todoControls button {
   border: 1px solid grey;
 }
@@ -299,6 +316,21 @@ button:not([disabled]):active {
 .todoControls {
   overflow: auto;
   background-color:;
+}
+
+.changeOrderFrame {
+}
+
+.orderBtn {
+  border: 0px solid black;
+  height: 1em;
+  width: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 0.3em;
+  margin-right: 0.2em;
 }
 
 /* #endregion */

@@ -1,7 +1,7 @@
 import { todoController } from '../controller/todoController';
 import { dates } from '../model/dates';
 import { todoStorage } from '../model/todoStorage';
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 
 const frontendUtils = {
   doTodoFormatting: function (dataObj) {
@@ -164,11 +164,13 @@ const frontendUtils = {
 
   todoBeingEdited: {},
 
-  getDateForUser: function (element) {
-    let fnsDate = element.doneBefore;
-    let userFormatDate = '';
+  formatDateForUser: function (date) {
+    if (!isValid(date)) {
+      console.error('date is not valid!');
+      return;
+    }
 
-    userFormatDate = format(fnsDate, 'iiiiii dd MMM yy');
+    const userFormatDate = format(date, 'iiiiii dd MMM yy');
 
     return userFormatDate;
   },

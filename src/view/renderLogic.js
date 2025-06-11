@@ -7,25 +7,53 @@ const renderLogic = {
   fillInBlock: function (block, array) {
     block.innerHTML = '';
     array.forEach((element) => {
-      const itemDiv = document.createElement('div');
-      const changeOrderDiv = document.createElement('div');
-      const titleDiv = document.createElement('div');
-      const dateDiv = document.createElement('div');
+      const itemDiv = this.createAppendNode({
+        type: 'div',
+        class: 'matrixItem',
+        parent: block,
+      });
 
-      itemDiv.setAttribute('class', 'matrixItem');
+      const todoItemLeftContainer = this.createAppendNode({
+        type: 'div',
+        class: 'todoItemLeftContainer',
+        parent: itemDiv,
+      });
 
-      changeOrderDiv.textContent = 'ʌ/v';
-      titleDiv.textContent = element.title;
-      dateDiv.textContent = element.dateSpecifiedByUser
-        ? frontendUtils.getDateForUser(element)
-        : '';
+      const changeOrderFrame = this.createAppendNode({
+        type: 'div',
+        class: 'changeOrderFrame',
+        parent: todoItemLeftContainer,
+      });
 
-      eventlisteners.addTodoListListener(element, itemDiv);
-      block.appendChild(itemDiv);
-      itemDiv.appendChild(changeOrderDiv);
+      const moveUpBtn = this.createAppendNode({
+        type: 'button',
+        class: ['orderBtn', 'upBtn'],
+        parent: todoItemLeftContainer,
+        textContent: `\u21E7`,
+      });
 
-      itemDiv.appendChild(titleDiv);
-      itemDiv.appendChild(dateDiv);
+      const moveDownBtn = this.createAppendNode({
+        type: 'button',
+        class: ['orderBtn', 'upBtn'],
+        parent: todoItemLeftContainer,
+        textContent: '\u21E9',
+      });
+
+      const titleDiv = this.createAppendNode({
+        type: 'div',
+        class: 'titleDiv',
+        parent: todoItemLeftContainer,
+        textContent: element.title,
+      });
+      const dateDiv = this.createAppendNode({
+        type: 'div',
+        class: 'dateDiv',
+        parent: itemDiv,
+        textContent: frontendUtils.formatDateForUser(element.doneBefore),
+      });
+
+      eventlisteners.addTodoListListener(element, titleDiv);
+      eventlisteners.addTodoListListener(element, dateDiv);
     });
   },
 
@@ -121,6 +149,33 @@ const renderLogic = {
 
   placeEmptyTodoForm: function () {
     domElements.todoForm.innerHTML = domElements.todoCreationForm;
+  },
+
+  createAppendNode(dataObj) {
+    let item = document.createElement(dataObj.type);
+    for (const prop in dataObj) {
+      console.log(dataObj[prop]);
+      switch (prop) {
+        case 'class':
+          if (Array.isArray(dataObj[prop])) {
+            let classArray = dataObj[prop];
+            classArray.forEach((element) => {
+              item.classList.add(element);
+            });
+          } else {
+            item.classList.add(dataObj[prop]);
+          }
+
+          break;
+        case 'parent':
+          dataObj[prop].appendChild(item);
+          break;
+        case 'textContent':
+          item.textContent = dataObj[prop];
+          break;
+      }
+    }
+    return item;
   },
 };
 
