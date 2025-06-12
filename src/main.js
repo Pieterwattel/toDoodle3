@@ -3,6 +3,7 @@ import { eventlisteners } from './controller/eventlisteners';
 import { UIStateManager, overviewStateManager } from './view/stateManager';
 import { runQuietTests } from './tests';
 import { todoController } from './controller/todoController';
+import { frontendController } from './view/frontendController';
 
 const todoTestArray = [
   {
@@ -39,9 +40,5 @@ const initializeApp = (function () {
   console.log(UIStateManager.UIStateStorage);
   UIStateManager.UIStateStorage.createTodo.applyState();
 
-  console.log(todoController.getTodoArray());
-  overviewStateManager.initializeStates();
-  overviewStateManager.overviewStorage.eisenhowerMatrix.applyOverview(
-    todoController.getTodoArray(),
-  );
+  frontendController.applyEisenhowerMatrix();
 })();

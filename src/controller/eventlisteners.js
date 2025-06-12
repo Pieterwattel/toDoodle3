@@ -4,7 +4,6 @@ import { frontendController } from '../view/frontendController';
 import { renderLogic } from '../view/renderLogic';
 import { overviewStateManager, UIStateManager } from '../view/stateManager';
 import { frontendUtils } from '../view/frontendUtils';
-import { overviewState } from '../view/overviewStates';
 
 class EventListeners {
   constructor() {}
@@ -118,8 +117,7 @@ class EventListeners {
       renderLogic.placeEmptyTodoForm();
       UIStateManager.stateStorage.createTodoState.applyState();
 
-      const currentOverview = overviewState.currentOverviewState;
-      overviewStateManager.overviewStorage[currentOverview].applyOverview();
+      frontendController.applyEisenhowerMatrix();
     });
 
     domElements.closeBtn.addEventListener('click', (e) => {
