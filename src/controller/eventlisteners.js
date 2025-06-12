@@ -2,7 +2,7 @@ import { domElements } from '../view/domElements';
 import { todoController } from './todoController';
 import { frontendController } from '../view/frontendController';
 import { renderLogic } from '../view/renderLogic';
-import { overviewStateManager, UIStateManager } from '../view/UIStateManager';
+import { overviewStateManager, UIStateManager } from '../view/stateManager';
 import { frontendUtils } from '../view/frontendUtils';
 import { overviewState } from '../view/overviewStates';
 

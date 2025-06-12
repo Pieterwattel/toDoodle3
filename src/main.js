@@ -1,6 +1,6 @@
 import './styles.css';
 import { eventlisteners } from './controller/eventlisteners';
-import { UIStateManager, overviewStateManager } from './view/UIStateManager';
+import { UIStateManager, overviewStateManager } from './view/stateManager';
 import { runQuietTests } from './tests';
 import { todoController } from './controller/todoController';
 
@@ -29,17 +29,15 @@ const todoTestArray = [
   // add your other todos here...
 ];
 
-
-
 runQuietTests({ verbose: false });
-  
 
 todoTestArray.forEach((todo) => todoController.createTodo(todo));
 
 const initializeApp = (function () {
   eventlisteners.initializeEventListeners();
   UIStateManager.initializeStates();
-  UIStateManager.stateStorage.createTodoState.applyState();
+  console.log(UIStateManager.UIStateStorage);
+  UIStateManager.UIStateStorage.createTodo.applyState();
 
   console.log(todoController.getTodoArray());
   overviewStateManager.initializeStates();

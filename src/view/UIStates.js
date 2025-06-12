@@ -3,6 +3,7 @@ import { domElements } from './domElements';
 import { renderLogic } from './renderLogic';
 import { frontendController } from './frontendController';
 import { todoController } from '../controller/todoController';
+import { UIStateManager } from './stateManager';
 
 class UIState {
   constructor(dataObj) {
@@ -13,12 +14,13 @@ class UIState {
   }
 
   static createState(dataObj) {
+    console.log('createstate ' + dataObj.name);
     const newUIState = new UIState(dataObj);
-    return newUIState;
+    UIStateManager.UIStateStorage[dataObj.name] = newUIState;
   }
 
   applyState() {
-    console.trace();
+    UIStateManager.currentUIState = this.name;
     this.enableDisableButtons(this.availableButtons, this.unavailableButtons);
     this.applyStateUI(this.todoFormContent);
   }

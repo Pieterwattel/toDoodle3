@@ -16,8 +16,8 @@ const UIStateManager = {
         domElements.removeTodoBtn,
       ],
     };
-    let createTodoState = UIState.createState(createTodoStateData);
-    UIStateManager.stateStorage.createTodoState = createTodoState;
+
+    UIState.createState(createTodoStateData);
 
     const emptyStateData = {
       name: 'empty',
@@ -29,8 +29,7 @@ const UIStateManager = {
         domElements.removeTodoBtn,
       ],
     };
-    let emptyState = UIState.createState(emptyStateData);
-    UIStateManager.stateStorage.emptyState = emptyState;
+    UIState.createState(emptyStateData);
 
     const todoSelectedStateData = {
       name: 'todoSelected',
@@ -43,8 +42,7 @@ const UIStateManager = {
       ],
       unavailableButtons: [],
     };
-    let todoSelectedState = UIState.createState(todoSelectedStateData);
-    UIStateManager.stateStorage.todoSelectedState = todoSelectedState;
+    UIState.createState(todoSelectedStateData);
 
     const editTodoStateData = {
       name: 'editTodo',
@@ -57,11 +55,11 @@ const UIStateManager = {
         domElements.removeTodoBtn,
       ],
     };
-    let editTodoState = UIState.createState(editTodoStateData);
-    UIStateManager.stateStorage.editTodoState = editTodoState;
+    UIState.createState(editTodoStateData);
   },
 
-  stateStorage: {},
+  currentUIState: '',
+  UIStateStorage: {},
 };
 
 const overviewStateManager = {
@@ -75,6 +73,7 @@ const overviewStateManager = {
     this.overviewStorage.eisenhowerMatrix = eisenhowerMatrix;
   },
 
+  currentOverviewState: '',
   overviewStorage: {},
 };
 

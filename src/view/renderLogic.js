@@ -156,7 +156,6 @@ const renderLogic = {
   createAppendNode(dataObj) {
     let item = document.createElement(dataObj.type);
     for (const prop in dataObj) {
-      console.log(dataObj[prop]);
       switch (prop) {
         case 'class':
           if (Array.isArray(dataObj[prop])) {
